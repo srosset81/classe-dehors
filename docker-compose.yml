@@ -18,7 +18,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
+      - "9090:8080"
     volumes:
       - ./letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -67,9 +67,9 @@ services:
     environment:
       - PORT=5000
     ports:
-      - "5000:5000"
+      - "4000:4000"
     expose:
-      - "5000"
+      - "4000"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`classe-dehors.org`)"
