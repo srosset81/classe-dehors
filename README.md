@@ -25,8 +25,8 @@ git clone https://github.com/srosset81/classe-dehors.git
 ### Build and start the containers
 
 ```
-docker-compose build
-docker-compose up -d
+sudo docker-compose build
+sudo docker-compose up -d
 ```
 
 ## Maintenance

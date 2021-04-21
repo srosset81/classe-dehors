@@ -53,5 +53,10 @@
     "prefix": "semapps",
     "owl": "",
     "url": "http://semapps.org/ns/core#"
+  },
+  {
+    "prefix": "cd",
+    "owl": "",
+    "url": "http://classe-dehors.org/ns/core#"
   }
 ]
