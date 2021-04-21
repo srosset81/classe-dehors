@@ -1,36 +1,28 @@
 import React from 'react';
-import { SimpleForm, TextInput, SelectInput, SelectArrayInput } from 'react-admin';
+import { SimpleForm, TextInput, SelectInput, ImageInput } from 'react-admin';
 import { LargeLabel } from "@semapps/archipelago-layout";
-import { ReferenceInput } from '@semapps/semantic-data-provider';
-
-const teachingLevel = [
-  { id: 'maternelle', name: 'Maternelle' },
-  { id: 'primaire', name: 'Primaire' },
-  { id: 'college', name: 'Collège' },
-  { id: 'lycee', name: 'Lycée' },
-  { id: 'universite', name: 'Université' },
-];
-
-const structureType = [
-  { id: 'ecole_publique', name: 'Ecole publique' },
-  { id: 'ecole_privee', name: 'Ecole privée sous contrat' },
-  { id: 'ecole_privee_hc', name: 'Ecole privée hors contrat' },
-  { id: 'centre_loisirs', name: 'Centre de loisirs' }
-];
+import { ReferenceInput, ImageField } from '@semapps/semantic-data-provider';
+import { teachingLevel, structureType } from '../../constants';
 
 export const PersonForm = props => (
   <SimpleForm redirect="show" {...props}>
     <TextInput source="pair:label" fullWidth />
+    <ImageInput source="pair:image" accept="image/*">
+      <ImageField source="src" />
+    </ImageInput>
     <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:AgentType' }}>
       <SelectInput optionText="pair:label" />
     </ReferenceInput>
-    <SelectArrayInput source="cd:teachingLevel" choices={teachingLevel} />
+    <SelectInput source="cd:teachingLevel" choices={teachingLevel} />
     <TextInput source="cd:subjects" fullWidth />
     <LargeLabel>Structure</LargeLabel>
-    <SelectArrayInput source="cd:structureType" choices={structureType} />
+    <SelectInput source="cd:structureType" choices={structureType} />
     <TextInput source="cd:structureName" fullWidth />
     <TextInput source="cd:structureLocality" fullWidth />
     <LargeLabel>Pratique</LargeLabel>
+    <ReferenceInput reference="Place" source="pair:hasLocation">
+      <SelectInput optionText="pair:label" />
+    </ReferenceInput>
     <TextInput source="cd:practiceTime" fullWidth />
     <TextInput source="cd:practiceFrequency" fullWidth />
     <TextInput source="cd:practiceSubjects" fullWidth />
@@ -40,7 +32,7 @@ export const PersonForm = props => (
     <TextInput source="cd:needs" fullWidth />
     <TextInput source="cd:comments" fullWidth />
     <LargeLabel>Contact</LargeLabel>
-    <TextInput source="pair:e-mail" fullWidth />
+    <TextInput source="pair:e-mail" helperText="L'adresse apparaîtra sur le site. Vous pouvez fournir une page (ci-dessous) si vous souhaitez être contactés différemment." fullWidth />
     <TextInput source="pair:aboutPage" fullWidth />
   </SimpleForm>
 );

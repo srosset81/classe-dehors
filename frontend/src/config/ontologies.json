@@ -48,5 +48,10 @@
     "prefix": "skos",
     "owl": "",
     "url": "http://www.w3.org/2004/02/skos/core#"
+  },
+  {
+    "prefix": "cd",
+    "owl": "",
+    "url": "http://classe-dehors.org/ns/core#"
   }
 ]
