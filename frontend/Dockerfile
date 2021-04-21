@@ -4,12 +4,12 @@ WORKDIR /app
 
 RUN apk add --update --no-cache git bash yarn nano
 
-RUN npm install -g serve
+RUN yarn global add serve
 
 COPY . /app
 
-RUN npm install
+RUN yarn install
 
-RUN npm run build
+RUN yarn run build
 
-CMD serve -s build -l 5000
+CMD serve -s build -l 4000
