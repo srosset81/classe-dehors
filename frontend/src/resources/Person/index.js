@@ -12,7 +12,7 @@ export default {
     edit: PersonEdit,
     icon: PersonIcon,
     options: {
-      label: 'Personnes'
+      label: 'Profils'
     }
   },
   dataModel: {
@@ -23,7 +23,7 @@ export default {
   },
   translations: {
     fr: {
-      name: 'Personne |||| Personnes',
+      name: 'Profil |||| Profils',
       fields: {
         'pair:label': 'Prénom ou pseudo',
         'pair:hasType': 'Type de profil',
@@ -32,6 +32,7 @@ export default {
         'pair:aboutPage': 'Page de contact',
         'pair:webPage': 'Avez-vous un site internet ou blog ?',
         'pair:hasLocation': 'Lieu de la pratique',
+        'pair:offers': 'Ressources partagées',
         'cd:teachingLevel': 'Niveau d’enseignement',
         'cd:subjects': 'Disciplines / Thèmes abordés',
         'cd:structureType': 'Type de structure',

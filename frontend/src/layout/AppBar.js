@@ -22,7 +22,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   logoArea: {
-    padding: 12
+    padding: 12,
+    [theme.breakpoints.down('xs')]: {
+      padding: 5,
+    }
   },
   logoText: {
     fontFamily: 'Helvetica',
@@ -57,13 +60,13 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
     <MuiAppBar position="sticky">
       <Container maxWidth="lg" className={classes.header}>
         <Grid container>
-          <Grid item sm={6} xs={10} className={classes.logoArea}>
+          <Grid item sm={4} xs={10} className={classes.logoArea}>
             <Link to="/" className={classes.menuLink}>
               {/*<img src={process.env.PUBLIC_URL + '/colibris-blanc.png'} alt="Colibris" className={classes.logo} />*/}
               <span className={classes.logoText}>Classe Dehors</span>
             </Link>
           </Grid>
-          <Grid item sm={6} xs={2} align="right">
+          <Grid item sm={8} xs={2} align="right">
             {xs ? (
               <IconButton
                 color="inherit"
@@ -74,8 +77,9 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
               </IconButton>
             ) : (
             <Grid container>
+              <Grid item sm={2} />
               {Object.keys(menuItems).map(link => (
-                <Grid item sm={3} key={link}>
+                <Grid item sm={2} key={link}>
                   <Box display="flex" height={48} alignItems="center" justifyContent="center">
                     <Link to={link} className={classes.menuLink}>
                       <Typography className={classes.menuText}>

@@ -46,8 +46,9 @@ const useStyles = makeStyles(theme => ({
 const menuItems = {
   '/': 'Le manifeste',
   '/Person': 'Annuaire',
-  '/Place': 'Lieux',
-  '/Event': 'Calendrier'
+  '/Place': 'Les lieux',
+  '/Event': 'Calendrier',
+  '/Document': 'Ressources'
 };
 
 const Layout = ({ appBar, logout, theme, children }) => {
@@ -64,10 +65,10 @@ const Layout = ({ appBar, logout, theme, children }) => {
       {React.cloneElement(appBar, { logout, menuItems, setSidebarOpen })}
       <Container maxWidth="lg" disableGutters={xs}>
         <Typography variant="h4" color="primary" className={classes.title} id="react-admin-title" component="h1" />
-        <Box mb={{ xs: 0, sm: 2 }}>{children}</Box>
-        <Box mb={{ xs: 0, sm: 3 }}>
+        <Box mb={{ xs: 1, sm: 2 }} mt={{ xs: 5, sm: 0 }}>{children}</Box>
+        <Box mb={{ xs: 1, sm: 3 }} mr={{ xs: 2, sm: 0 }}>
           <Typography variant="subtitle2" color="textSecondary" align="right">
-            <a href="https://semapps.org" target="_blank" rel="noopener noreferrer" className={classes.footerLink}>Plateforme collaborative propulsée par SemApps</a>
+            <a href="https://www.virtual-assembly.org/semapps/" target="_blank" rel="noopener noreferrer" className={classes.footerLink}>Plateforme collaborative propulsée par SemApps</a>
           </Typography>
         </Box>
       </Container>

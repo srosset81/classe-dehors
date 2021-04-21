@@ -1,7 +1,6 @@
 import React from 'react';
-import { TextField, UrlField, DateField } from 'react-admin';
-import { Hero, Show, MainList, SeparatedListField, MarkdownField } from '@semapps/archipelago-layout';
-import { ReferenceArrayField } from '@semapps/semantic-data-provider';
+import { UrlField, DateField } from 'react-admin';
+import { Hero, Show, MainList, MarkdownField } from '@semapps/archipelago-layout';
 import { MapField } from '@semapps/geo-components';
 import EventTitle from './EventTitle';
 

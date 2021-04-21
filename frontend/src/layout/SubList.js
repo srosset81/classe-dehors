@@ -15,8 +15,8 @@ const SubList = ({ children, label }) => {
         field && record[field.props.source] && React.isValidElement(field) ? (
           <div key={field.props.source}>
             {field.props.addLabel ? (
-              <>
-                <p><strong>
+              <Typography paragraph>
+                <Typography variant="h6">
                   {translate(
                     ...getFieldLabelTranslationArgs({
                       label: field.props.label,
@@ -24,13 +24,14 @@ const SubList = ({ children, label }) => {
                       source: field.props.source
                     })
                   )}
-                </strong></p>
+                  <br />
+                </Typography>
                 {React.cloneElement(field, {
                   record,
                   resource,
                   basePath
                 })}
-              </>
+              </Typography>
             ) : typeof field.type === 'string' ? (
               field
             ) : (

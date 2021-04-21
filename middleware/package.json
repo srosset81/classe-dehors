@@ -1,6 +1,6 @@
 {
-  "name": "cdlt-middleware",
-  "version": "0.1.44",
+  "name": "classe-dehors-middleware",
+  "version": "0.1.0",
   "private": true,
   "description": "Middleware for classe-dehors.org",
   "keywords": [

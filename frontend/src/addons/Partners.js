@@ -1,12 +1,14 @@
 import React from 'react';
 import { Grid, Box, makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   logo: {
-    // width: '100%',
     maxWidth: 200,
     maxHeight: 200,
-    align: 'center'
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: 150,
+      maxHeight: 150
+    }
   }
 }));
 
@@ -27,7 +29,7 @@ const Partners = () => {
   return (
     <Grid container>
       {Object.entries(partners).map(([key, label]) => (
-        <Grid item xs={3} key={key}>
+        <Grid item xs={6} sm={3} key={key}>
           <Box
             display="flex"
             height={200}

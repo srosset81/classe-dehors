@@ -14,6 +14,10 @@ module.exports = [
     dereference: ['pair:hasPostalAddress']
   },
   {
+    path: '/documents',
+    acceptedTypes: 'pair:Document'
+  },
+  {
     path: '/status',
     acceptedTypes: [
       'pair:Status',

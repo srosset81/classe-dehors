@@ -22,7 +22,7 @@ const ProjectFilterSidebar = () => {
     <Card className={classes.card}>
       <CardContent>
         <FilterLiveSearch />
-        {/*<ReferenceFilter reference="Theme" source="pair:hasTopic" />*/}
+        <ReferenceFilter reference="Type" source="pair:hasType" />
       </CardContent>
     </Card>
   );

@@ -5,7 +5,7 @@ import { ReferenceInput, ImageField } from '@semapps/semantic-data-provider';
 import { teachingLevel, structureType } from '../../constants';
 
 export const PersonForm = props => (
-  <SimpleForm redirect="show" {...props}>
+  <SimpleForm {...props} redirect="show">
     <TextInput source="pair:label" fullWidth />
     <ImageInput source="pair:image" accept="image/*">
       <ImageField source="src" />
