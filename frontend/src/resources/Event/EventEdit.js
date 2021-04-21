@@ -11,9 +11,7 @@ const EventEdit = props => (
   <Edit title={<EventTitle />} {...props}>
     <SimpleForm redirect="show">
       <TextInput source="pair:label" fullWidth />
-      <TextInput source="pair:comment" fullWidth />
       <MarkdownInput multiline source="pair:description" fullWidth />
-      <TextInput source="pair:aboutPage" fullWidth />
       <DateTimeInput
         source="pair:startDate"
         options={{
@@ -36,6 +34,7 @@ const EventEdit = props => (
         }}
         fullWidth
       />
+      <TextInput source="pair:aboutPage" fullWidth />
       <PairLocationInput source="pair:hasLocation" fullWidth />
     </SimpleForm>
   </Edit>

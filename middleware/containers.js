@@ -48,6 +48,9 @@ module.exports = [
     ]
   },
   {
+    path: '/pages'
+  },
+  {
     path: '/files'
   }
 ];

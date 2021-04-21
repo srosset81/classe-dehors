@@ -8,6 +8,7 @@ import * as resources from './resources';
 
 import Layout from './layout/Layout';
 import theme from './layout/theme';
+import HomePage from './pages/HomePage';
 
 const history = createBrowserHistory();
 
@@ -18,6 +19,7 @@ const App = () => (
     layout={Layout}
     theme={theme}
     history={history}
+    dashboard={HomePage}
   >
     {Object.entries(resources).map(([key, resource]) => (
       <Resource key={key} name={key} {...resource.config} />

@@ -26,8 +26,6 @@ export const PersonForm = props => (
     </ReferenceInput>
     <SelectArrayInput source="cd:teachingLevel" choices={teachingLevel} />
     <TextInput source="cd:subjects" fullWidth />
-    <TextInput source="pair:e-mail" fullWidth />
-    <TextInput source="pair:aboutPage" fullWidth />
     <LargeLabel>Structure</LargeLabel>
     <SelectArrayInput source="cd:structureType" choices={structureType} />
     <TextInput source="cd:structureName" fullWidth />
@@ -41,6 +39,9 @@ export const PersonForm = props => (
     <TextInput source="pair:webPage" fullWidth />
     <TextInput source="cd:needs" fullWidth />
     <TextInput source="cd:comments" fullWidth />
+    <LargeLabel>Contact</LargeLabel>
+    <TextInput source="pair:e-mail" fullWidth />
+    <TextInput source="pair:aboutPage" fullWidth />
   </SimpleForm>
 );
 

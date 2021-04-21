@@ -28,10 +28,10 @@ export default {
         'pair:label': 'Titre',
         'pair:description': 'Description',
         'pair:comment': 'Courte description',
-        'pair:aboutPage': 'Site web',
+        'pair:aboutPage': 'Lien visio',
         'pair:startDate': 'Date de début',
         'pair:endDate': 'Date de fin',
-        'pair:hasLocation': 'Adresse',
+        'pair:hasLocation': 'Adresse physique',
         'pair:involves': 'Participants',
         'pair:hasTopic': 'Thèmes'
       }

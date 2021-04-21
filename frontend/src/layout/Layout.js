@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
   footerLink: {
     color: theme.palette.grey["500"],
+    textDecoration: 'none',
     '&:hover': {
       textDecoration: 'underline'
     }

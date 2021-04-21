@@ -9,9 +9,7 @@ export const PlaceEdit = props => (
   <Edit title={<PlaceTitle />} {...props}>
     <SimpleForm redirect="show">
       <TextInput source="pair:label" fullWidth />
-      <TextInput source="pair:comment" fullWidth />
       <MarkdownInput multiline source="pair:description" fullWidth />
-      <TextInput source="pair:homePage" fullWidth />
       <LocationInput
         mapboxConfig={{
           access_token: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,

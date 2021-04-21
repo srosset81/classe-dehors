@@ -9,15 +9,9 @@ const EventShow = props => (
   <Show title={<EventTitle />} {...props}>
     <>
       <Hero>
-        <TextField source="pair:comment" />
         <DateField source="pair:startDate" showTime />
         <DateField source="pair:endDate" showTime />
         <UrlField source="pair:aboutPage" />
-        <ReferenceArrayField reference="Theme" source="pair:hasTopic">
-          <SeparatedListField linkType="show">
-            <TextField source="pair:label" />
-          </SeparatedListField>
-        </ReferenceArrayField>
       </Hero>
       <MainList>
         <MarkdownField source="pair:description" />

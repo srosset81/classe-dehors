@@ -39,7 +39,7 @@ export default {
         'cd:practiceFrequency': 'A quelle fréquence, quelle durée ?',
         'cd:practiceSubjects': 'Disciplines mobilisées dehors ?',
         'cd:skills': 'Quels savoirs/pratiques/compétence pourriez-vous partager avec des collègues intéressés par la classe dehors ?',
-        'cd:needs:': 'Avez-vous des questions ou des besoins urgents pour développer votre pratique de la classe dehors?',
+        'cd:needs': 'Avez-vous des questions ou des besoins urgents pour développer votre pratique de la classe dehors?',
         'cd:comments': 'Commentaires et suggestions'
       }
     }
