@@ -13,22 +13,25 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const partners = {
-  'cemea.jpg': 'Les CEMEA',
-  'fee.png': 'Faire Ecole Ensemble (Fée)',
-  'fcpn.png': 'Fédération des clubs Connaître et protéger la nature (FCPN)',
-  'ligue-enseignement.png': 'La Ligue de l’Enseignement',
-  'profs-en-transition.jpg': 'Profs en transition',
-  'frene.jpg': 'Réseau français d’éducation à la nature et à l’environnement (FRENE)',
-  'tiers-lieux-edu.jpg': 'Tiers Lieux Edu',
-  'graines-oc.png': 'Graine Poitou Charentes',
-  'av.png': 'L’Assemblée Virtuelle',
+  'cemea.jpg': 'https://www.cemea.asso.fr',
+  'fee.png': 'https://faire-ecole.org',
+  'fcpn.png': 'https://www.fcpn.org',
+  'ligue-enseignement.png': 'https://laligue.org',
+  'profs-en-transition.jpg': 'https://profsentransition.com',
+  'frene.jpg': 'https://frene.org',
+  'tiers-lieux-edu.jpg': 'https://www.tierslieuxedu.org',
+  'graines-oc.png': 'https://www.grainepc.org',
+  'agirpe.png': 'https://www.agirpourlenvironnement.org',
+  'rfve.jpg': 'https://rfve.fr',
+  'tdf.png': 'https://www.tousdehors.fr',
+  'av.png': 'https://virtual-assembly.org',
 };
 
 const Partners = () => {
   const classes = useStyles();
   return (
     <Grid container>
-      {Object.entries(partners).map(([key, label]) => (
+      {Object.entries(partners).map(([key, url]) => (
         <Grid item xs={6} sm={3} key={key}>
           <Box
             display="flex"
@@ -36,7 +39,9 @@ const Partners = () => {
             alignItems="center"
             justifyContent="center"
           >
-            <img className={classes.logo} src={'/partners/' + key} alt={label} />
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              <img className={classes.logo} src={'/partners/' + key} alt="" />
+            </a>
           </Box>
         </Grid>
       ))}
