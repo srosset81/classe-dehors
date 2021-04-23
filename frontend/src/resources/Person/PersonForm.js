@@ -1,15 +1,15 @@
 import React from 'react';
-import { SimpleForm, TextInput, SelectInput, ImageInput } from 'react-admin';
+import { SimpleForm, TextInput, SelectInput, Link } from 'react-admin';
 import { LargeLabel } from "@semapps/archipelago-layout";
-import { ReferenceInput, ImageField } from '@semapps/semantic-data-provider';
+import { ReferenceInput } from '@semapps/semantic-data-provider';
+import { Box } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { teachingLevel, structureType } from '../../constants';
 
-export const PersonForm = props => (
-  <SimpleForm {...props} redirect="show">
+export const PersonForm = ({ mode, ...rest }) => (
+  <SimpleForm {...rest} redirect="show">
+    {mode === 'create' && <Box mb={2} fullWidth><Alert severity="warning" fullWidth>Avant de créer votre profil, nous vous invitons à <Link to="/Place/create">créer le lieu</Link> où vous pratiquez la classe dehors. Vous pourrez ensuite indiquer ce lieu ci-dessous.</Alert></Box>}
     <TextInput source="pair:label" fullWidth />
-    <ImageInput source="pair:image" accept="image/*">
-      <ImageField source="src" />
-    </ImageInput>
     <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:AgentType' }}>
       <SelectInput optionText="pair:label" />
     </ReferenceInput>

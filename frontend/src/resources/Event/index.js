@@ -1,4 +1,4 @@
-import PairResourceCreate from '../../pair/PairResourceCreate';
+import EventCreate from "./EventCreate";
 import EventEdit from './EventEdit';
 import EventList from './EventList';
 import EventShow from './EventShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: EventList,
     show: EventShow,
-    create: PairResourceCreate,
+    create: EventCreate,
     edit: EventEdit,
     icon: EventIcon,
     options: {
@@ -28,12 +28,13 @@ export default {
         'pair:label': 'Titre',
         'pair:description': 'Description',
         'pair:comment': 'Courte description',
-        'pair:aboutPage': 'Lien visio',
         'pair:startDate': 'Date de début',
         'pair:endDate': 'Date de fin',
         'pair:hasLocation': 'Adresse physique',
         'pair:involves': 'Participants',
-        'pair:hasTopic': 'Thèmes'
+        'pair:hasTopic': 'Thèmes',
+        'cd:registrationPage': 'Lien inscription',
+        'cd:meetingPage': 'Lien visio',
       }
     }
   }

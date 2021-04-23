@@ -1,6 +1,6 @@
 import React from 'react';
-import { TextField, SelectField, EmailField, UrlField, ShowButton, EditButton, Datagrid } from 'react-admin';
-import { Hero, Show, SeparatedListField, MainList } from '@semapps/archipelago-layout';
+import { TextField, SelectField, EmailField, UrlField } from 'react-admin';
+import { Hero, Show, SeparatedListField } from '@semapps/archipelago-layout';
 import { ReferenceField, ReferenceArrayField } from '@semapps/semantic-data-provider';
 import PersonTitle from './PersonTitle';
 import { teachingLevel, structureType } from '../../constants';
@@ -9,7 +9,7 @@ import SubList from "../../layout/SubList";
 const PersonShow = props => (
   <Show title={<PersonTitle />} {...props}>
     <>
-      <Hero image="pair:image">
+      <Hero>
         <TextField source="pair:label" />
         <ReferenceArrayField reference="Type" source="pair:hasType">
           <SeparatedListField linkType={false}>
@@ -40,16 +40,16 @@ const PersonShow = props => (
         <TextField source="cd:needs" fullWidth />
         <TextField source="cd:comments" fullWidth />
       </SubList>
-      <MainList>
-        <ReferenceArrayField reference="Document" source="pair:offers">
-          <Datagrid rowClick="show">
-            <TextField source="pair:label" />
-            <TextField source="pair:webPage" />
-            <ShowButton />
-            <EditButton />
-          </Datagrid>
-        </ReferenceArrayField>
-      </MainList>
+      {/*<MainList>*/}
+      {/*  <ReferenceArrayField reference="Document" source="pair:offers">*/}
+      {/*    <Datagrid rowClick="show">*/}
+      {/*      <TextField source="pair:label" />*/}
+      {/*      <TextField source="pair:webPage" />*/}
+      {/*      <ShowButton />*/}
+      {/*      <EditButton />*/}
+      {/*    </Datagrid>*/}
+      {/*  </ReferenceArrayField>*/}
+      {/*</MainList>*/}
     </>
   </Show>
 );

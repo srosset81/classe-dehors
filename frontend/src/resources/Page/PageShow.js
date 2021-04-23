@@ -6,7 +6,7 @@ import MarkdownField from "../../markdown/MarkdownField";
 import PageTitle from './PageTitle';
 import useDoubleClick from "../../layout/useDoubleClick";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   card: {
     paddingTop: 0
   }
@@ -15,9 +15,12 @@ const useStyles = makeStyles(theme => ({
 const PageShow = props => {
   const history = useHistory();
   const classes = useStyles();
-  const [refCallback] = useDoubleClick(() => history.push(props.basePath + '/' + encodeURIComponent(props.id) + '/edit'));
+  const [refCallback] = useDoubleClick(() => {
+    if( props.hasEdit ) history.push(props.basePath + '/' + encodeURIComponent(props.id) + '/edit');
+  });
+  const resourceId = props.id.startsWith(process.env.REACT_APP_MIDDLEWARE_URL) ? props.id : process.env.REACT_APP_MIDDLEWARE_URL + 'pages/' + props.id;
   return (
-    <Show title={<PageTitle />} classes={{ card: classes.card }} {...props}>
+    <Show title={<PageTitle />} classes={{ card: classes.card }} {...props} id={resourceId}>
       <>
         <Box ref={refCallback}>
           <MainList>

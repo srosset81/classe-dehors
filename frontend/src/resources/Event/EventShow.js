@@ -1,7 +1,6 @@
 import React from 'react';
 import { UrlField, DateField } from 'react-admin';
 import { Hero, Show, MainList, MarkdownField } from '@semapps/archipelago-layout';
-import { MapField } from '@semapps/geo-components';
 import EventTitle from './EventTitle';
 
 const EventShow = props => (
@@ -10,16 +9,11 @@ const EventShow = props => (
       <Hero>
         <DateField source="pair:startDate" showTime />
         <DateField source="pair:endDate" showTime />
-        <UrlField source="pair:aboutPage" />
+        <UrlField source="cd:registrationPage" />
+        <UrlField source="cd:meetingPage" />
       </Hero>
       <MainList>
         <MarkdownField source="pair:description" />
-        <MapField
-          source="pair:hasLocation"
-          address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
-          latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-          longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
-        />
       </MainList>
     </>
   </Show>

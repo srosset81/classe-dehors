@@ -11,7 +11,7 @@ const HomePage = () => {
 
   return(
     <ShowContextProvider value={useShowController(config)}>
-      <PageShow {...config} />
+      <PageShow {...config} hasEdit={false} />
     </ShowContextProvider>
   );
 };

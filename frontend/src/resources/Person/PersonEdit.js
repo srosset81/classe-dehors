@@ -5,7 +5,7 @@ import PersonForm from './PersonForm';
 
 export const PersonEdit = props => (
   <Edit title={<PersonTitle />} {...props}>
-    <PersonForm />
+    <PersonForm mode="edit" />
   </Edit>
 );
 

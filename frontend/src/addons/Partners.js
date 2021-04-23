@@ -3,8 +3,8 @@ import { Grid, Box, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   logo: {
-    maxWidth: 200,
-    maxHeight: 200,
+    maxWidth: 180,
+    maxHeight: 180,
     [theme.breakpoints.down('xs')]: {
       maxWidth: 150,
       maxHeight: 150
@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const partners = {
-  // 'av': 'L’Assemblée Virtuelle',
   'cemea.jpg': 'Les CEMEA',
   'fee.png': 'Faire Ecole Ensemble (Fée)',
   'fcpn.png': 'Fédération des clubs Connaître et protéger la nature (FCPN)',
@@ -21,7 +20,8 @@ const partners = {
   'profs-en-transition.jpg': 'Profs en transition',
   'frene.jpg': 'Réseau français d’éducation à la nature et à l’environnement (FRENE)',
   'tiers-lieux-edu.jpg': 'Tiers Lieux Edu',
-  'graines-oc.png': 'Graine Poitou Charentes'
+  'graines-oc.png': 'Graine Poitou Charentes',
+  'av.png': 'L’Assemblée Virtuelle',
 };
 
 const Partners = () => {

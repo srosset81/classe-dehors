@@ -4,7 +4,7 @@ import PersonForm from './PersonForm';
 
 export const PersonCreate = props => (
   <Create {...props}>
-    <PersonForm />
+    <PersonForm mode="create" />
   </Create>
 );
 
