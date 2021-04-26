@@ -13,17 +13,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const partners = {
+  'agirpe.png': 'https://www.agirpourlenvironnement.org',
+  'andev.jpg': 'https://www.andev.fr',
   'cemea.jpg': 'https://www.cemea.asso.fr',
-  'fee.png': 'https://faire-ecole.org',
   'fcpn.png': 'https://www.fcpn.org',
+  'fee.png': 'https://faire-ecole.org',
+  'frene.jpg': 'https://frene.org',
+  'graines-oc.png': 'https://www.grainepc.org',
   'ligue-enseignement.png': 'https://laligue.org',
   'profs-en-transition.jpg': 'https://profsentransition.com',
-  'frene.jpg': 'https://frene.org',
-  'tiers-lieux-edu.jpg': 'https://www.tierslieuxedu.org',
-  'graines-oc.png': 'https://www.grainepc.org',
-  'agirpe.png': 'https://www.agirpourlenvironnement.org',
   'rfve.jpg': 'https://rfve.fr',
-  'tdf.png': 'https://www.tousdehors.fr',
+  'tdf.png': 'https://tousdehors.fr',
+  'tiers-lieux-edu.jpg': 'https://www.tierslieuxedu.org',
   'av.png': 'https://virtual-assembly.org',
 };
 
