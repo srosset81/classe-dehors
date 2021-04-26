@@ -1,10 +1,11 @@
 import React from 'react';
-import { TextField, SelectField, EmailField, UrlField } from 'react-admin';
+import { TextField, SelectField, UrlField } from 'react-admin';
 import { Hero, Show, SeparatedListField } from '@semapps/archipelago-layout';
 import { ReferenceField, ReferenceArrayField } from '@semapps/semantic-data-provider';
 import PersonTitle from './PersonTitle';
 import { teachingLevel, structureType } from '../../constants';
 import SubList from "../../layout/SubList";
+import ContactField from "../../contact/ContactField";
 
 const PersonShow = props => (
   <Show title={<PersonTitle />} {...props}>
@@ -18,7 +19,7 @@ const PersonShow = props => (
         </ReferenceArrayField>
         <SelectField source="cd:teachingLevel" choices={teachingLevel} />
         <TextField source="cd:subjects" />
-        <EmailField source="pair:e-mail" />
+        <ContactField source="pair:e-mail" />
         <UrlField source="pair:aboutPage" />
       </Hero>
       <SubList label="Structure">
