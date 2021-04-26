@@ -16,6 +16,7 @@ const partners = {
   'agirpe.png': 'https://www.agirpourlenvironnement.org',
   'andev.jpg': 'https://www.andev.fr',
   'cemea.jpg': 'https://www.cemea.asso.fr',
+  'fcpe.png': 'https://www.fcpe.asso.fr',
   'fcpn.png': 'https://www.fcpn.org',
   'fee.png': 'https://faire-ecole.org',
   'frene.jpg': 'https://frene.org',
