@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, useNotify } from 'react-admin';
+import { Button, useNotify, required } from 'react-admin';
 import { Dialog, DialogTitle, DialogContent, DialogActions, makeStyles, TextField } from '@material-ui/core';
 import { Form, Field } from 'react-final-form';
 import SendIcon from '@material-ui/icons/Send';
@@ -32,9 +32,9 @@ const FinalFormTextField = ({ input: { name, onChange, value, ...restInput }, me
     onChange={onChange}
     value={value}
   />
-)
+);
 
-const ContactDialog = ({ user, emailField, open, onClose }) => {
+const ContactDialog = ({ user, emailPredicate, open, onClose }) => {
   const classes = useStyles();
   const notify = useNotify();
 
@@ -42,7 +42,7 @@ const ContactDialog = ({ user, emailField, open, onClose }) => {
     const result = await fetch(process.env.REACT_APP_MIDDLEWARE_URL + '_mailer/contact-user', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userUri: user['@id'] || user.id, emailField, ...values })
+      body: JSON.stringify({ userUri: user['@id'] || user.id, emailPredicate, ...values })
     });
 
     if( result.ok ) {
@@ -61,10 +61,10 @@ const ContactDialog = ({ user, emailField, open, onClose }) => {
           <Dialog fullWidth open={open} onClose={onClose}>
             <DialogTitle className={classes.title}>Contacter {user['pair:label']}</DialogTitle>
             <DialogContent className={classes.addForm}>
-              <Field name="name" component={FinalFormTextField} label="Votre nom" variant="filled" margin="dense" fullWidth />
-              <Field name="email" component={FinalFormTextField} label="Votre adresse mail" variant="filled" margin="dense" fullWidth />
-              <Field name="title" component={FinalFormTextField} label="Objet" variant="filled" margin="dense" fullWidth />
-              <Field name="content" component={FinalFormTextField} label="Message" variant="filled" margin="dense" fullWidth multiline rows={7} />
+              <Field name="name" component={FinalFormTextField} label="Votre nom" variant="filled" margin="dense" fullWidth validate={required('Champ requis')} />
+              <Field name="email" component={FinalFormTextField} label="Votre adresse mail" variant="filled" margin="dense" fullWidth validate={required('Champ requis')} />
+              <Field name="title" component={FinalFormTextField} label="Objet" variant="filled" margin="dense" fullWidth validate={required('Champ requis')} />
+              <Field name="content" component={FinalFormTextField} label="Message" variant="filled" margin="dense" fullWidth multiline rows={7} validate={required('Champ requis')} />
             </DialogContent>
             <DialogActions className={classes.actions}>
               <Button label="ra.action.close" variant="text" onClick={onClose} />

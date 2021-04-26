@@ -22,23 +22,10 @@ module.exports = {
   dependencies: ['ldp'],
   actions: {
     async contactUser(ctx) {
-      const { userUri, name, email, title, content } = ctx.params;
+      const { userUri, name, email, title, content, emailPredicate } = ctx.params;
 
-      console.log({
-        from: `${CONFIG.FROM_NAME} <${CONFIG.FROM_EMAIL}>`,
-        transport: {
-          host: CONFIG.SMTP_HOST,
-          port: CONFIG.SMTP_PORT,
-          secure: CONFIG.SMTP_SECURE,
-          auth: {
-            user: CONFIG.SMTP_USER,
-            pass: CONFIG.SMTP_PASS,
-          },
-        },
-      });
-
-      if( !userUri ) {
-        throw new Error('Parameter userUri is missing');
+      if( !userUri || !emailPredicate ) {
+        throw new Error('One or more parameters are missing');
       }
 
       const user = await ctx.call('ldp.resource.get', {
@@ -46,22 +33,8 @@ module.exports = {
         accept: MIME_TYPES.JSON
       });
 
-      console.log({
-        to: `${user['pair:label']} <${user['pair:e-mail']}>`,
-        replyTo: `${name} <${email}>`,
-        subject: title,
-        template: 'contact-user',
-        data: {
-          name,
-          email,
-          title,
-          content,
-          contentWithBr: content.replace(/\r\n|\r|\n/g, '<br />')
-        }
-      });
-
       await ctx.call('mailer.send', {
-        to: `${user['pair:label']} <${user['pair:e-mail']}>`,
+        to: user[emailPredicate],
         replyTo: `${name} <${email}>`,
         subject: title,
         template: 'contact-user',

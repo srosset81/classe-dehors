@@ -17,7 +17,7 @@ const ContactField = ({ source }) => {
         </Link>
         <ContactDialog
           user={record}
-          emailField={source}
+          emailPredicate={source}
           open={showDialog}
           onClose={() => setShowDialog(false)}
         />
