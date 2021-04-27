@@ -1,9 +1,10 @@
 import React from 'react';
-import { Show, MarkdownField, MainList, GridList, AvatarField } from '@semapps/archipelago-layout';
-import { makeStyles } from '@material-ui/core';
+import { Show, MarkdownField, MainList, SimpleList } from '@semapps/archipelago-layout';
+import { Avatar, makeStyles } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
 import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import PlaceTitle from './PlaceTitle';
+import PersonIcon from "@material-ui/icons/Person";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -18,9 +19,15 @@ const PlaceShow = props => {
       <MainList>
         <MarkdownField source="pair:description" addLabel />
         <ReferenceArrayField reference="Person" source="pair:locationOf">
-          <GridList xs={6} sm={2} linkType="show">
-            <AvatarField label="pair:label" image="pair:image" labelColor="#7E7EF6" />
-          </GridList>
+          <SimpleList
+            primaryText={record => record['pair:label']}
+            leftAvatar={() => (
+              <Avatar width="100%">
+                <PersonIcon />
+              </Avatar>
+            )}
+            linkType="show"
+          />
         </ReferenceArrayField>
         <MapField
           source="pair:hasPostalAddress"
