@@ -77,7 +77,6 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
               </IconButton>
             ) : (
             <Grid container>
-              <Grid item sm={2} />
               {Object.keys(menuItems).map(link => (
                 <Grid item sm={2} key={link}>
                   <Box display="flex" height={48} alignItems="center" justifyContent="center">

@@ -48,10 +48,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const menuItems = {
-  '/Person': 'Annuaire',
+  '/': 'Accueil',
   '/Place': 'Carte',
-  '/Event': 'Wébinaires',
+  '/Person': 'Annuaire',
   '/Page/ressources/show': 'Ressources',
+  '/Event': 'Webinaires',
   '/Page/faq/show': 'Foire aux questions'
 };
 

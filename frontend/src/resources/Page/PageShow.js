@@ -20,7 +20,7 @@ const PageShow = props => {
   });
   const resourceId = props.id.startsWith(process.env.REACT_APP_MIDDLEWARE_URL) ? props.id : process.env.REACT_APP_MIDDLEWARE_URL + 'pages/' + props.id;
   return (
-    <Show title={<PageTitle />} classes={{ card: classes.card }} {...props} id={resourceId}>
+    <Show title={<PageTitle />} classes={{ card: classes.card }} {...props} id={resourceId} hasEdit={false} hasList={false}>
       <>
         <Box ref={refCallback}>
           <MainList>
