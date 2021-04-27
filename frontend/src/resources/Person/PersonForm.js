@@ -32,7 +32,7 @@ export const PersonForm = ({ mode, ...rest }) => (
     <TextInput source="cd:needs" fullWidth />
     <TextInput source="cd:comments" fullWidth />
     <LargeLabel>Contact</LargeLabel>
-    <TextInput source="pair:e-mail" helperText="L'adresse apparaîtra sur le site. Vous pouvez fournir une page (ci-dessous) si vous souhaitez être contactés différemment." fullWidth />
+    {mode === 'create' && <TextInput source="pair:e-mail" helperText="Votre adresse mail n'apparaîtra pas publiquement. On pourra vous écrire via un formulaire de contact." fullWidth />}
     <TextInput source="pair:aboutPage" fullWidth />
   </SimpleForm>
 );

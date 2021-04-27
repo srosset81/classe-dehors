@@ -23,11 +23,12 @@ module.exports = {
       exposedHeaders: '*'
     }
   },
-  dependencies: ['ldp', 'sparqlEndpoint'],
+  dependencies: ['ldp', 'sparqlEndpoint', 'mailer'],
   async started() {
     [
       ...(await this.broker.call('ldp.getApiRoutes')),
-      ...(await this.broker.call('sparqlEndpoint.getApiRoutes'))
+      ...(await this.broker.call('sparqlEndpoint.getApiRoutes')),
+      ...(await this.broker.call('mailer.getApiRoutes'))
     ].forEach(route => this.addRoute(route));
   }
 };
