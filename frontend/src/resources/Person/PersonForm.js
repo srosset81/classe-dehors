@@ -1,14 +1,16 @@
 import React from 'react';
-import { SimpleForm, TextInput, SelectInput, Link } from 'react-admin';
+import { SimpleForm, TextInput, SelectInput, Toolbar } from 'react-admin';
 import { LargeLabel } from "@semapps/archipelago-layout";
 import { ReferenceInput } from '@semapps/semantic-data-provider';
-import { Box } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
 import { teachingLevel, structureType } from '../../constants';
+import ReferenceQuickCreateInput from "../../pair/ReferenceQuickCreateInput";
 
 export const PersonForm = ({ mode, ...rest }) => (
-  <SimpleForm {...rest} redirect="show">
-    {mode === 'create' && <Box mb={2} fullWidth><Alert severity="warning" fullWidth>Avant de créer votre profil, nous vous invitons à <Link to="/Place/create">créer le lieu</Link> où vous pratiquez la classe dehors. Vous pourrez ensuite indiquer ce lieu ci-dessous.</Alert></Box>}
+  <SimpleForm
+    {...rest}
+    redirect="show"
+    toolbar={<Toolbar alwaysEnableSaveButton />} // Always enable save as there are problems with ReferenceQuickCreateInput
+  >
     <TextInput source="pair:label" fullWidth />
     <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:AgentType' }}>
       <SelectInput optionText="pair:label" />
@@ -20,9 +22,9 @@ export const PersonForm = ({ mode, ...rest }) => (
     <TextInput source="cd:structureName" fullWidth />
     <TextInput source="cd:structureLocality" fullWidth />
     <LargeLabel>Pratique</LargeLabel>
-    <ReferenceInput reference="Place" source="pair:hasLocation">
+    <ReferenceQuickCreateInput reference="Place" source="pair:hasLocation" perPage={1000}>
       <SelectInput optionText="pair:label" />
-    </ReferenceInput>
+    </ReferenceQuickCreateInput>
     <TextInput source="cd:practiceTime" fullWidth />
     <TextInput source="cd:practiceFrequency" fullWidth />
     <TextInput source="cd:practiceSubjects" fullWidth />
