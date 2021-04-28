@@ -1,9 +1,11 @@
 import React from 'react';
-import { SimpleForm, TextInput, SelectInput, Toolbar } from 'react-admin';
+import { SimpleForm, TextInput, SelectInput, Toolbar, required } from 'react-admin';
+import MarkdownInput from 'ra-input-markdown';
 import { LargeLabel } from "@semapps/archipelago-layout";
 import { ReferenceInput } from '@semapps/semantic-data-provider';
 import { teachingLevel, structureType } from '../../constants';
 import ReferenceQuickCreateInput from "../../pair/ReferenceQuickCreateInput";
+import PairLocationInput from "../../pair/PairLocationInput";
 
 export const PersonForm = ({ mode, ...rest }) => (
   <SimpleForm
@@ -11,7 +13,7 @@ export const PersonForm = ({ mode, ...rest }) => (
     redirect="show"
     toolbar={<Toolbar alwaysEnableSaveButton />} // Always enable save as there are problems with ReferenceQuickCreateInput
   >
-    <TextInput source="pair:label" fullWidth />
+    <TextInput source="pair:label" validate={required()} fullWidth />
     <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:AgentType' }}>
       <SelectInput optionText="pair:label" />
     </ReferenceInput>
@@ -22,8 +24,10 @@ export const PersonForm = ({ mode, ...rest }) => (
     <TextInput source="cd:structureName" fullWidth />
     <TextInput source="cd:structureLocality" fullWidth />
     <LargeLabel>Pratique</LargeLabel>
-    <ReferenceQuickCreateInput reference="Place" source="pair:hasLocation" perPage={1000}>
-      <SelectInput optionText="pair:label" />
+    <ReferenceQuickCreateInput reference="Place" source="pair:hasLocation" selectOptionText="pair:label" perPage={1000}>
+      <TextInput label="Nom" source="pair:label" validate={required()} fullWidth />
+      <MarkdownInput label="Description" source="pair:description" multiline fullWidth />
+      <PairLocationInput label="Adresse" source="pair:hasPostalAddress" fullWidth />
     </ReferenceQuickCreateInput>
     <TextInput source="cd:practiceTime" fullWidth />
     <TextInput source="cd:practiceFrequency" fullWidth />

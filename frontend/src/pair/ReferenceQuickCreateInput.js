@@ -1,34 +1,29 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-final-form';
-import {
-  required,
-  Button,
-  SaveButton,
-  TextInput,
-  useCreate,
-  useNotify,
-  FormWithRedirect
-} from 'react-admin';
+import { Button, SaveButton, useCreate, useNotify, useTranslate, FormWithRedirect, SelectInput } from 'react-admin';
 import { Dialog, DialogTitle, DialogContent, DialogActions, makeStyles } from '@material-ui/core';
 import IconContentAdd from '@material-ui/icons/Add';
 import IconCancel from '@material-ui/icons/Cancel';
-import PairLocationInput from "./PairLocationInput";
 import { ReferenceInput } from '@semapps/semantic-data-provider';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center'
+  },
+  dialogTitle: {
+    paddingBottom: 0
   }
 });
 
-const ReferenceQuickCreateInput = props => {
+const ReferenceQuickCreateInput = ({ children, selectOptionText, ...rest }) => {
   const classes = useStyles();
 
   const [showDialog, setShowDialog] = useState(false);
   const [version, setVersion] = useState(0);
-  const [create, { loading }] = useCreate(props.reference);
+  const [create, { loading }] = useCreate(rest.reference);
   const notify = useNotify();
+  const translate = useTranslate();
   const form = useForm();
 
   const handleSubmit = async values => {
@@ -38,7 +33,7 @@ const ReferenceQuickCreateInput = props => {
         onSuccess: ({ data }) => {
           setShowDialog(false);
           // Update the comment form to target the newly created post
-          form.change(props.source, data.id);
+          form.change(rest.source, data.id);
           // Increase the version so that ReferenceInput reload all the available values
           setVersion(version + 1);
         },
@@ -52,20 +47,21 @@ const ReferenceQuickCreateInput = props => {
   return (
     <div className={classes.root}>
       {/* Updating the key will force ReferenceInput to reload the available values */}
-      <ReferenceInput key={version} {...props} />
+      <ReferenceInput key={version} {...rest}>
+        <SelectInput optionText={selectOptionText} />
+      </ReferenceInput>
       <Button onClick={() => setShowDialog(true)} label="ra.action.create">
         <IconContentAdd />
       </Button>
       <Dialog fullWidth open={showDialog} onClose={() => setShowDialog(false)}>
-        <DialogTitle>Créer un nouveau lieu</DialogTitle>
+        <DialogTitle className={classes.dialogTitle}>{translate('ra.action.create')}</DialogTitle>
         <FormWithRedirect
-          resource={props.reference}
+          resource={rest.reference}
           save={handleSubmit}
           render={({ handleSubmitWithRedirect, pristine, saving }) => (
             <>
               <DialogContent>
-                <TextInput label="Titre" source="pair:label" validate={required()} fullWidth />
-                <PairLocationInput label="Adresse" source="pair:hasPostalAddress" fullWidth />
+                {children}
               </DialogContent>
               <DialogActions>
                 <Button label="ra.action.cancel" onClick={() => setShowDialog(false)} disabled={loading}>
