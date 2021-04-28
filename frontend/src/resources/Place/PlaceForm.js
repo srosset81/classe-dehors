@@ -1,14 +1,12 @@
 import React from 'react';
 import { SimpleForm, TextInput } from 'react-admin';
 import MarkdownInput from 'ra-input-markdown';
-import { PersonsInput } from "../../inputs";
 import PairLocationInput from "../../pair/PairLocationInput";
 
 export const PlaceForm = ({ mode, ...rest }) => (
   <SimpleForm {...rest} redirect="show">
     <TextInput source="pair:label" fullWidth />
     <MarkdownInput multiline source="pair:description" fullWidth />
-    {mode === 'edit' && (<PersonsInput source="pair:locationOf" />)}
     <PairLocationInput source="pair:hasPostalAddress" fullWidth />
   </SimpleForm>
 );
