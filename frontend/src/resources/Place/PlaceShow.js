@@ -20,7 +20,7 @@ const PlaceShow = props => {
         <MarkdownField source="pair:description" addLabel />
         <ReferenceArrayField reference="Person" source="pair:locationOf">
           <SimpleList
-            primaryText={record => record['pair:label']}
+            primaryText={record => record?.['pair:label']}
             leftAvatar={() => (
               <Avatar width="100%">
                 <PersonIcon />
