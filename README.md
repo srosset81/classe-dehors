@@ -29,6 +29,8 @@ sudo docker-compose build
 sudo docker-compose up -d
 ```
 
+The frontend should be available on port `4000` ([http://localhost:4000](http://localhost:4000))
+
 ## Maintenance
 
 ### Access the middleware REPL
