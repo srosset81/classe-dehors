@@ -18,7 +18,7 @@ const PersonShow = props => (
           </SeparatedListField>
         </ReferenceArrayField>
         <SelectField source="cd:teachingLevel" choices={teachingLevel} />
-        <TextField source="cd:subjects" />
+        {/* <TextField source="cd:subjects" /> */}
         <ContactField source="pair:e-mail" />
         <UrlField source="pair:aboutPage" />
       </Hero>

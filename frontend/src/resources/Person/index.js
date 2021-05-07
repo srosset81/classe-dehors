@@ -34,7 +34,8 @@ export default {
         'pair:hasLocation': 'Lieu de pratique de la classe dehors',
         'pair:offers': 'Ressources partagées',
         'cd:teachingLevel': 'Niveau d’enseignement',
-        'cd:subjects': 'Disciplines / Thèmes abordés',
+        // TODO: remove from data structure ?
+        // 'cd:subjects': 'Disciplines / Thèmes abordés',
         'cd:structureType': 'Type de structure',
         'cd:structureName': 'Nom de la structure',
         'cd:structureLocality': 'Commune',

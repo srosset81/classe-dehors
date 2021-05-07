@@ -18,7 +18,7 @@ export const PersonForm = ({ mode, ...rest }) => (
       <SelectInput optionText="pair:label" />
     </ReferenceInput>
     <SelectInput source="cd:teachingLevel" choices={teachingLevel} />
-    <TextInput source="cd:subjects" fullWidth />
+    {/* <TextInput source="cd:subjects" fullWidth /> */}
     <LargeLabel>Structure</LargeLabel>
     <SelectInput source="cd:structureType" choices={structureType} />
     <TextInput source="cd:structureName" fullWidth />
