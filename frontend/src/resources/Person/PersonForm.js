@@ -25,9 +25,9 @@ export const PersonForm = ({ mode, ...rest }) => (
     <TextInput source="cd:structureLocality" fullWidth />
     <LargeLabel>Pratique</LargeLabel>
     <ReferenceQuickCreateInput reference="Place" source="pair:hasLocation" selectOptionText="pair:label" perPage={1000}>
+      <PairLocationInput label="Adresse" source="pair:hasPostalAddress" fullWidth />
       <TextInput label="Nom" source="pair:label" validate={required()} fullWidth />
       <MarkdownInput label="Description" source="pair:description" multiline fullWidth />
-      <PairLocationInput label="Adresse" source="pair:hasPostalAddress" fullWidth />
     </ReferenceQuickCreateInput>
     <TextInput source="cd:practiceTime" fullWidth />
     <TextInput source="cd:practiceFrequency" fullWidth />
