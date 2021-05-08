@@ -5,9 +5,9 @@ import PairLocationInput from "../../pair/PairLocationInput";
 
 export const PlaceForm = ({ mode, ...rest }) => (
   <SimpleForm {...rest} redirect="show">
+    <PairLocationInput source="pair:hasPostalAddress" fullWidth />
     <TextInput source="pair:label" fullWidth />
     <MarkdownInput multiline source="pair:description" fullWidth />
-    <PairLocationInput source="pair:hasPostalAddress" fullWidth />
   </SimpleForm>
 );
 
