@@ -1542,15 +1542,15 @@
   resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.1.0.tgz#0e81ce56b4883b4b2a3001ebe1ab298b84237204"
   integrity sha512-afmTuJrylUU/0OtqzaRkbyYFFNgCF73Bvel/sw90pvGrWIZ+vyoIJqA6eMSoA6+nb443kTmulmBtC9NerXboNg==
 
-"@semapps/activitypub-components@0.1.30":
-  version "0.1.30"
-  resolved "https://registry.yarnpkg.com/@semapps/activitypub-components/-/activitypub-components-0.1.30.tgz#936b54993791eefd1079556ebf77cbc21d7ce785"
-  integrity sha512-hRMWniSUov0J65M88B+IZ/x6tS4bEbF5uKx7Lj+dIpN2de6NZGhdKZapz4oyzRQLXmRLQDb7aEvOTB4eCIJYeA==
+"@semapps/activitypub-components@0.1.32":
+  version "0.1.32"
+  resolved "https://registry.yarnpkg.com/@semapps/activitypub-components/-/activitypub-components-0.1.32.tgz#8c9dea376556fc422df917683f3a26d034f75216"
+  integrity sha512-q5/uA72L34L2U2xd0n9qJiG4cL+0m27Iv4/JT4SxbI5UlWsIdHwtJFB/QD2UaQP6uB/TYvMn6+iiLC8/LIkxFg==
 
-"@semapps/archipelago-layout@0.1.30":
-  version "0.1.30"
-  resolved "https://registry.yarnpkg.com/@semapps/archipelago-layout/-/archipelago-layout-0.1.30.tgz#e7b1a4d12478fa8608d246e28c4b7be787514d20"
-  integrity sha512-XgegA9PTdKWUa6NTbDCDrIjOUGfQpggNlk6PkEc5uXXtnjcqKQ6LBsdSlLgIV33cRNrCfn0qeeDlIVX1I3Tpig==
+"@semapps/archipelago-layout@0.1.32":
+  version "0.1.32"
+  resolved "https://registry.yarnpkg.com/@semapps/archipelago-layout/-/archipelago-layout-0.1.32.tgz#ccf79e907d940c2eca8dc4c5ea75bb69a01a4a15"
+  integrity sha512-uPmF+abVJTUw366Jt+C55dF6tkYjlmucd7EEEbop3D/VtegoiXibFHVO6Rp5PhPCPVOOZjbx8FU0Q5szJ7g/UQ==
   dependencies:
     "@material-ui/lab" "^4.0.0-alpha.57"
     autosuggest-highlight "^3.1.1"
@@ -1561,20 +1561,20 @@
     react-markdown "^4.3.1"
     react-masonry-css "^1.0.14"
 
-"@semapps/date-components@0.1.30":
-  version "0.1.30"
-  resolved "https://registry.yarnpkg.com/@semapps/date-components/-/date-components-0.1.30.tgz#0501268326934e04272a7ec3d5eae51dfd4d986a"
-  integrity sha512-1CAYEnOE8KKgrb2fKIvtwjgfI/PINWtatgnGFoQB9zCxjCzJZ6ZX17oqmhHvbMsseHCCncOgZlPwQCZvBtwEIA==
+"@semapps/date-components@0.1.32":
+  version "0.1.32"
+  resolved "https://registry.yarnpkg.com/@semapps/date-components/-/date-components-0.1.32.tgz#53931510f49351b034d44aece1d12de9f77a7ba6"
+  integrity sha512-q2pNm0msIxzZjB0zpAxgqXF2zn+8Q7ovEMfgD3YgijrycOoaqoUFZp09FxuZESV9dM2KUsl4ssX+4RHoFUJ62A==
   dependencies:
     "@date-io/core" "^1.3.6"
     "@date-io/date-fns" "^1.3.13"
     "@material-ui/pickers" "^3.2.10"
     date-fns "~2.8.1"
 
-"@semapps/geo-components@0.1.30":
-  version "0.1.30"
-  resolved "https://registry.yarnpkg.com/@semapps/geo-components/-/geo-components-0.1.30.tgz#263a5769cb5ae0dac3421c88c2d48fcfbdebd788"
-  integrity sha512-JyuqOcdQVPl6782372rSjMGly7fMUTGyyV6ItG7T5VvvxJTWNCaHFlVzazUyaLnOD5insGCrxv7ccXQI1r9Ugg==
+"@semapps/geo-components@0.1.32":
+  version "0.1.32"
+  resolved "https://registry.yarnpkg.com/@semapps/geo-components/-/geo-components-0.1.32.tgz#4b7f64529ca7fdfa03c6b5ad867e027f95b9cf89"
+  integrity sha512-04ltCw1/HleeuONLzyKSrT3F7/KBTFJTOt/8KDKO6kqBt+7a2SbzHOq3US5vqVS/vueZe0vXr17FCoPl/ArQLg==
   dependencies:
     "@material-ui/lab" "^4.0.0-alpha.57"
     autosuggest-highlight "^3.1.1"
@@ -1582,10 +1582,10 @@
     react-leaflet "^3.1.0"
     react-leaflet-markercluster "^3.0.0-rc1"
 
-"@semapps/semantic-data-provider@0.1.30":
-  version "0.1.30"
-  resolved "https://registry.yarnpkg.com/@semapps/semantic-data-provider/-/semantic-data-provider-0.1.30.tgz#5cca425ce4bcca5601abcd7b884016d3e4d39f00"
-  integrity sha512-yKs0Fgpjvmb57+VT/auffWku4ep9DHPA8wfQf/toFqXoBYlRc/ck9IxUqolZ7MPONh9rO5dSqaDt+azKRFWPtg==
+"@semapps/semantic-data-provider@0.1.32":
+  version "0.1.32"
+  resolved "https://registry.yarnpkg.com/@semapps/semantic-data-provider/-/semantic-data-provider-0.1.32.tgz#e488503affb6d742ca6f4853a49ab55eb3e1d635"
+  integrity sha512-DFTY+wcR0NHLYUL594hx7Y9T8F6jL86se/Occ6M+BBHVhdBXjJVxnS5+Yy+OxbG1XE5sBiM49iVhUAyFLBFbag==
   dependencies:
     jsonld "^3.0.1"
     speakingurl "^14.0.1"

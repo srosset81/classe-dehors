@@ -10,44 +10,44 @@ import MarkdownIntroduction from "../../markdown/MarkdownIntroduction";
 const PlaceList = props => (
   <>
     <MarkdownIntroduction pageId="place-introduction" />
-  <MultiViewsList
-    views={{
-      map: {
-        label: 'Carte',
-        icon: MapIcon,
-        perPage: 500,
-        pagination: false,
-        list: (
-          <MapList
-            latitude={record => record?.['pair:hasPostalAddress']?.['pair:latitude']}
-            longitude={record => record?.['pair:hasPostalAddress']?.['pair:longitude']}
-            label={record => record?.['pair:label']}
-            description={record => record?.['pair:hasPostalAddress']?.['pair:label']}
-            scrollWheelZoom
-          />
-        )
-      },
-      list: {
-        label: 'Liste',
-        icon: ListIcon,
-        sort: { field: 'pair:label', order: 'DESC' },
-        perPage: 25,
-        list: (
-          <SimpleList
-            primaryText={record => record['pair:label']}
-            secondaryText={record => record['pair:hasPostalAddress']?.['pair:label']}
-            leftAvatar={() => (
-              <Avatar width="100%">
-                <PlaceIcon />
-              </Avatar>
-            )}
-            linkType="show"
-          />
-        )
-      }
-    }}
-    {...props}
-    />
+    <MultiViewsList
+      views={{
+        map: {
+          label: 'Carte',
+          icon: MapIcon,
+          perPage: 500,
+          pagination: false,
+          list: (
+            <MapList
+              latitude={record => record?.['pair:hasPostalAddress']?.['pair:latitude']}
+              longitude={record => record?.['pair:hasPostalAddress']?.['pair:longitude']}
+              label={record => record?.['pair:label']}
+              description={record => record?.['pair:hasPostalAddress']?.['pair:label']}
+              scrollWheelZoom
+            />
+          )
+        },
+        list: {
+          label: 'Liste',
+          icon: ListIcon,
+          sort: { field: 'pair:label', order: 'DESC' },
+          perPage: 25,
+          list: (
+            <SimpleList
+              primaryText={record => record['pair:label']}
+              secondaryText={record => record['pair:hasPostalAddress']?.['pair:label']}
+              leftAvatar={() => (
+                <Avatar width="100%">
+                  <PlaceIcon />
+                </Avatar>
+              )}
+              linkType="show"
+            />
+          )
+        }
+      }}
+      {...props}
+      />
     </>
 );
 
