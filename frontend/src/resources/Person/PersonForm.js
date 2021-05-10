@@ -18,16 +18,16 @@ export const PersonForm = ({ mode, ...rest }) => (
       <SelectInput optionText="pair:label" />
     </ReferenceInput>
     <SelectInput source="cd:teachingLevel" choices={teachingLevel} />
-    <TextInput source="cd:subjects" fullWidth />
+    {/* <TextInput source="cd:subjects" fullWidth /> */}
     <LargeLabel>Structure</LargeLabel>
     <SelectInput source="cd:structureType" choices={structureType} />
     <TextInput source="cd:structureName" fullWidth />
     <TextInput source="cd:structureLocality" fullWidth />
     <LargeLabel>Pratique</LargeLabel>
     <ReferenceQuickCreateInput reference="Place" source="pair:hasLocation" selectOptionText="pair:label" perPage={1000}>
+      <PairLocationInput label="Adresse" source="pair:hasPostalAddress" fullWidth />
       <TextInput label="Nom" source="pair:label" validate={required()} fullWidth />
       <MarkdownInput label="Description" source="pair:description" multiline fullWidth />
-      <PairLocationInput label="Adresse" source="pair:hasPostalAddress" fullWidth />
     </ReferenceQuickCreateInput>
     <TextInput source="cd:practiceTime" fullWidth />
     <TextInput source="cd:practiceFrequency" fullWidth />

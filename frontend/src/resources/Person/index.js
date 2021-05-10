@@ -31,10 +31,11 @@ export default {
         'pair:image': 'Photo',
         'pair:aboutPage': 'Page de contact',
         'pair:webPage': 'Avez-vous un site internet ou blog ?',
-        'pair:hasLocation': 'Lieu de la pratique',
+        'pair:hasLocation': 'Lieu de pratique de la classe dehors',
         'pair:offers': 'Ressources partagées',
         'cd:teachingLevel': 'Niveau d’enseignement',
-        'cd:subjects': 'Disciplines / Thèmes abordés',
+        // TODO: remove from data structure ?
+        // 'cd:subjects': 'Disciplines / Thèmes abordés',
         'cd:structureType': 'Type de structure',
         'cd:structureName': 'Nom de la structure',
         'cd:structureLocality': 'Commune',

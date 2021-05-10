@@ -5,8 +5,11 @@ import { Avatar } from "@material-ui/core";
 import MapIcon from '@material-ui/icons/Map';
 import ListIcon from '@material-ui/icons/List';
 import PlaceIcon from '@material-ui/icons/Place';
+import MarkdownIntroduction from "../../markdown/MarkdownIntroduction";
 
 const PlaceList = props => (
+  <>
+    <MarkdownIntroduction pageId="place-introduction" />
   <MultiViewsList
     views={{
       map: {
@@ -44,7 +47,8 @@ const PlaceList = props => (
       }
     }}
     {...props}
-  />
+    />
+    </>
 );
 
 export default PlaceList;

@@ -49,8 +49,8 @@ const useStyles = makeStyles(theme => ({
 
 const menuItems = {
   '/': 'Accueil',
-  '/Place': 'Carte',
   '/Person': 'Annuaire',
+  '/Place': 'Carte',
   '/Page/ressources/show': 'Ressources',
   '/Event': 'Webinaires',
   '/Page/faq/show': 'Foire aux questions'
