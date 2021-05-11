@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-final-form';
-import { Button, SaveButton, useCreate, useNotify, useTranslate, FormWithRedirect, SelectInput } from 'react-admin';
+import { Button, SaveButton, useCreate, useNotify, useTranslate, FormWithRedirect, AutocompleteInput } from 'react-admin';
 import { Dialog, DialogTitle, DialogContent, DialogActions, makeStyles } from '@material-ui/core';
 import IconContentAdd from '@material-ui/icons/Add';
 import IconCancel from '@material-ui/icons/Cancel';
@@ -13,7 +13,10 @@ const useStyles = makeStyles({
   },
   dialogTitle: {
     paddingBottom: 0
-  }
+  },
+  container: {
+    flexGrow: 0,
+  },
 });
 
 const ReferenceQuickCreateInput = ({ children, selectOptionText, validate, ...rest }) => {
@@ -47,8 +50,8 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, validate, ...re
   return (
     <div className={classes.root}>
       {/* Updating the key will force ReferenceInput to reload the available values */}
-      <ReferenceInput key={version} {...rest}>
-        <SelectInput optionText={selectOptionText} />
+      <ReferenceInput key={version} {...rest} classes={{container:classes.container}}>
+        <AutocompleteInput optionText={selectOptionText} suggestionLimit={5} />
       </ReferenceInput>
       <Button onClick={() => setShowDialog(true)} label="ra.action.create">
         <IconContentAdd />
