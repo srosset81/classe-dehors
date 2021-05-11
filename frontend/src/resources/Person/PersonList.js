@@ -1,7 +1,6 @@
 import React from 'react';
-import { List, SimpleList } from '@semapps/archipelago-layout';
+import { List, SimpleList, ListActions } from '@semapps/archipelago-layout';
 import PersonFilterSidebar from "./PersonFilterSidebar";
-import { ListActions } from "react-admin";
 import { Avatar } from "@material-ui/core";
 import PersonIcon from '@material-ui/icons/Person';
 import MarkdownIntroduction from "../../markdown/MarkdownIntroduction";
