@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   }
 });
 
-const ReferenceQuickCreateInput = ({ children, selectOptionText, ...rest }) => {
+const ReferenceQuickCreateInput = ({ children, selectOptionText, validate, ...rest }) => {
   const classes = useStyles();
 
   const [showDialog, setShowDialog] = useState(false);
@@ -56,6 +56,7 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, ...rest }) => {
       <Dialog fullWidth open={showDialog} onClose={() => setShowDialog(false)}>
         <DialogTitle className={classes.dialogTitle}>{translate('ra.action.create')}</DialogTitle>
         <FormWithRedirect
+          validate={validate}
           resource={rest.reference}
           save={handleSubmit}
           render={({ handleSubmitWithRedirect, pristine, saving }) => (
