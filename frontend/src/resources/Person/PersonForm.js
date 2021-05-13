@@ -3,6 +3,7 @@ import {
   SimpleForm,
   TextInput,
   SelectInput,
+  CheckboxGroupInput,
   Toolbar,
   required,
 } from "react-admin";
@@ -26,7 +27,13 @@ export const PersonForm = ({ mode, ...rest }) => (
     >
       <SelectInput optionText="pair:label" />
     </ReferenceInput>
-    <SelectInput source="cd:teachingLevel" choices={teachingLevel} />
+    <CheckboxGroupInput
+      source="cd:teachingLevel"
+      choices={teachingLevel}
+      format={
+        (data) => (data ? (typeof data === "string" ? [data] : data) : []) // deal with the possibility for teaching level to be a string or a list
+      }
+    />
     {/* <TextInput source="cd:subjects" fullWidth /> */}
     <LargeLabel>Structure</LargeLabel>
     <SelectInput source="cd:structureType" choices={structureType} />
