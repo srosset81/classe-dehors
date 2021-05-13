@@ -51,7 +51,7 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, validate, ...re
     <div className={classes.root}>
       {/* Updating the key will force ReferenceInput to reload the available values */}
       <ReferenceInput key={version} {...rest} classes={{container:classes.container}}>
-        <AutocompleteInput optionText={selectOptionText} suggestionLimit={5} />
+        <AutocompleteInput optionText={selectOptionText} suggestionLimit={5} shouldRenderSuggestions={value => value.length > 0} />
       </ReferenceInput>
       <Button onClick={() => setShowDialog(true)} label="ra.action.create">
         <IconContentAdd />
