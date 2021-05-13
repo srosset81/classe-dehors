@@ -1,6 +1,6 @@
 import React from 'react';
 import { required, SimpleForm, TextInput } from 'react-admin';
-import MarkdownInput from 'ra-input-markdown';
+import MarkdownInput from '../../markdown/MarkdownInput';
 import { DateTimeInput } from '@semapps/date-components';
 import frLocale from "date-fns/locale/fr";
 

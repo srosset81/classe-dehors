@@ -1,11 +1,10 @@
 import React from "react";
 import { SimpleForm, TextInput } from "react-admin";
-import MarkdownInput from "ra-input-markdown";
+import MarkdownInput from "../../markdown/MarkdownInput";
 import PairLocationInput from "../../pair/PairLocationInput";
 
 export const validatePlaceForm = (values) => {
   const errors = {};
-  console.log(values);
   if (!values["pair:hasPostalAddress"]) {
     errors["pair:hasPostalAddress"] = "required";
   }
@@ -17,6 +16,7 @@ export const validatePlaceForm = (values) => {
   }
   return errors;
 };
+
 export const PlaceFields = () => (
   <>
     <p>Merci de remplir tous les champs</p>
@@ -36,7 +36,7 @@ export const PlaceFields = () => (
   </>
 );
 
-export const PlaceForm = ({ mode, ...rest }) => (
+export const PlaceForm = ({ ...rest }) => (
   <SimpleForm {...rest} redirect="show" validate={validatePlaceForm}>
     <PlaceFields />
   </SimpleForm>
