@@ -1,11 +1,17 @@
-import React from 'react';
-import { SimpleForm, TextInput, SelectInput, Toolbar, required } from 'react-admin';
-import MarkdownInput from 'ra-input-markdown';
+import React from "react";
+import {
+  SimpleForm,
+  TextInput,
+  SelectInput,
+  CheckboxGroupInput,
+  Toolbar,
+  required,
+} from "react-admin";
 import { LargeLabel } from "@semapps/archipelago-layout";
-import { ReferenceInput } from '@semapps/semantic-data-provider';
-import { teachingLevel, structureType } from '../../constants';
+import { ReferenceInput } from "@semapps/semantic-data-provider";
+import { teachingLevel, structureType } from "../../constants";
 import ReferenceQuickCreateInput from "../../pair/ReferenceQuickCreateInput";
-import PairLocationInput from "../../pair/PairLocationInput";
+import { validatePlaceForm, PlaceFields } from "../Place/PlaceForm";
 
 export const PersonForm = ({ mode, ...rest }) => (
   <SimpleForm
@@ -14,20 +20,34 @@ export const PersonForm = ({ mode, ...rest }) => (
     toolbar={<Toolbar alwaysEnableSaveButton />} // Always enable save as there are problems with ReferenceQuickCreateInput
   >
     <TextInput source="pair:label" validate={required()} fullWidth />
-    <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:AgentType' }}>
+    <ReferenceInput
+      reference="Type"
+      source="pair:hasType"
+      filter={{ a: "pair:AgentType" }}
+    >
       <SelectInput optionText="pair:label" />
     </ReferenceInput>
-    <SelectInput source="cd:teachingLevel" choices={teachingLevel} />
+    <CheckboxGroupInput
+      source="cd:teachingLevel"
+      choices={teachingLevel}
+      format={
+        (data) => (data ? (typeof data === "string" ? [data] : data) : []) // deal with the possibility for teaching level to be a string or a list
+      }
+    />
     {/* <TextInput source="cd:subjects" fullWidth /> */}
     <LargeLabel>Structure</LargeLabel>
     <SelectInput source="cd:structureType" choices={structureType} />
     <TextInput source="cd:structureName" fullWidth />
     <TextInput source="cd:structureLocality" fullWidth />
     <LargeLabel>Pratique</LargeLabel>
-    <ReferenceQuickCreateInput reference="Place" source="pair:hasLocation" selectOptionText="pair:label" perPage={1000}>
-      <PairLocationInput label="Adresse" source="pair:hasPostalAddress" fullWidth />
-      <TextInput label="Nom" source="pair:label" validate={required()} fullWidth />
-      <MarkdownInput label="Description" source="pair:description" multiline fullWidth />
+    <ReferenceQuickCreateInput
+      reference="Place"
+      source="pair:hasLocation"
+      selectOptionText="pair:label"
+      perPage={1000}
+      validate={validatePlaceForm}
+    >
+      <PlaceFields />
     </ReferenceQuickCreateInput>
     <TextInput source="cd:practiceTime" fullWidth />
     <TextInput source="cd:practiceFrequency" fullWidth />
@@ -38,7 +58,13 @@ export const PersonForm = ({ mode, ...rest }) => (
     <TextInput source="cd:needs" fullWidth />
     <TextInput source="cd:comments" fullWidth />
     <LargeLabel>Contact</LargeLabel>
-    {mode === 'create' && <TextInput source="pair:e-mail" helperText="Votre adresse mail n'apparaîtra pas publiquement. On pourra vous écrire via un formulaire de contact." fullWidth />}
+    {mode === "create" && (
+      <TextInput
+        source="pair:e-mail"
+        helperText="Votre adresse mail n'apparaîtra pas publiquement. On pourra vous écrire via un formulaire de contact."
+        fullWidth
+      />
+    )}
     <TextInput source="pair:aboutPage" fullWidth />
   </SimpleForm>
 );

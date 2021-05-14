@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-final-form';
-import { Button, SaveButton, useCreate, useNotify, useTranslate, FormWithRedirect, SelectInput } from 'react-admin';
+import { Button, SaveButton, useCreate, useNotify, useTranslate, FormWithRedirect, AutocompleteInput } from 'react-admin';
 import { Dialog, DialogTitle, DialogContent, DialogActions, makeStyles } from '@material-ui/core';
 import IconContentAdd from '@material-ui/icons/Add';
 import IconCancel from '@material-ui/icons/Cancel';
@@ -13,10 +13,13 @@ const useStyles = makeStyles({
   },
   dialogTitle: {
     paddingBottom: 0
-  }
+  },
+  container: {
+    flexGrow: 0,
+  },
 });
 
-const ReferenceQuickCreateInput = ({ children, selectOptionText, ...rest }) => {
+const ReferenceQuickCreateInput = ({ children, selectOptionText, validate, ...rest }) => {
   const classes = useStyles();
 
   const [showDialog, setShowDialog] = useState(false);
@@ -47,8 +50,8 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, ...rest }) => {
   return (
     <div className={classes.root}>
       {/* Updating the key will force ReferenceInput to reload the available values */}
-      <ReferenceInput key={version} {...rest}>
-        <SelectInput optionText={selectOptionText} />
+      <ReferenceInput key={version} {...rest} classes={{container:classes.container}}>
+        <AutocompleteInput optionText={selectOptionText} suggestionLimit={5} shouldRenderSuggestions={value => value.length > 0} />
       </ReferenceInput>
       <Button onClick={() => setShowDialog(true)} label="ra.action.create">
         <IconContentAdd />
@@ -56,6 +59,7 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, ...rest }) => {
       <Dialog fullWidth open={showDialog} onClose={() => setShowDialog(false)}>
         <DialogTitle className={classes.dialogTitle}>{translate('ra.action.create')}</DialogTitle>
         <FormWithRedirect
+          validate={validate}
           resource={rest.reference}
           save={handleSubmit}
           render={({ handleSubmitWithRedirect, pristine, saving }) => (
