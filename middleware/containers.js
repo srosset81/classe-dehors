@@ -6,7 +6,7 @@ module.exports = [
   {
     path: '/events',
     acceptedTypes: 'pair:Event',
-    dereference: ['pair:hasLocation/pair:hasPostalAddress']
+    dereference: ['pair:hasLocation/pair:hasPostalAddress', 'pair:operatedBy']
   },
   {
     path: '/places',

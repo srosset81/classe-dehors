@@ -1,6 +1,12 @@
 import React from 'react';
-import { UrlField, DateField } from 'react-admin';
-import { Hero, Show, MainList, MarkdownField } from '@semapps/archipelago-layout';
+import { UrlField, DateField, TextField } from 'react-admin';
+import { ReferenceField } from '@semapps/semantic-data-provider';
+import {
+  Hero,
+  Show,
+  MainList,
+  MarkdownField,
+} from '@semapps/archipelago-layout';
 import EventTitle from './EventTitle';
 
 const EventShow = props => (
@@ -9,6 +15,13 @@ const EventShow = props => (
       <Hero>
         <DateField source="pair:startDate" showTime />
         <DateField source="pair:endDate" showTime />
+        <ReferenceField
+          reference="Organization"
+          source="pair:operatedBy"
+          linkType="show"
+        >
+          <TextField source="pair:label" />
+        </ReferenceField>
         <UrlField source="cd:registrationPage" />
         <UrlField source="cd:meetingPage" />
       </Hero>

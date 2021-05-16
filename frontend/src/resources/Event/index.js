@@ -33,6 +33,7 @@ export default {
         'pair:hasLocation': 'Adresse physique',
         'pair:involves': 'Participants',
         'pair:hasTopic': 'Thèmes',
+        'pair:operatedBy': 'Organisateur',
         'cd:registrationPage': 'Lien inscription',
         'cd:meetingPage': 'Lien visio',
       }
