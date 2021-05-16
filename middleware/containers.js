@@ -52,6 +52,10 @@ module.exports = [
     ]
   },
   {
+    path: '/organizations',
+    acceptedTypes: 'pair:organizationOfMembership'
+  },
+  {
     path: '/pages'
   },
   {
