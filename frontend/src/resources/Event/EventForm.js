@@ -34,7 +34,7 @@ const EventForm = props => (
       />
       <MarkdownInput
         multiline
-        label="Lien vers le site de l'organisation"
+        helperText="Description de votre organisation"
         source="pair:description"
         fullWidth
       />
