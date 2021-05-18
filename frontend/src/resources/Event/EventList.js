@@ -1,5 +1,5 @@
 import React from 'react';
-import { DateField } from 'react-admin';
+import { DateField, ReferenceField, TextField } from 'react-admin';
 import { Avatar } from '@material-ui/core';
 import { List, SimpleList, ListActions } from '@semapps/archipelago-layout';
 import EventIcon from '@material-ui/icons/Event';
@@ -16,6 +16,18 @@ const EventList = props => (
     <SimpleList
       primaryText={record => record["pair:label"]}
       secondaryText={record => (
+          <ReferenceField
+            record={record}
+            reference="Organization"
+            basePath="Organization" // Hack to get access to to Organization data
+            source="pair:operatedBy"
+            linkType="show"
+          >
+            <TextField source="pair:label" />
+          </ReferenceField>
+        )
+      }
+      tertiaryText={(record) => (
         <>
           Du&nbsp;
           <DateField record={record} source="pair:startDate" showTime />
