@@ -30,9 +30,29 @@ const EventList = props => (
       tertiaryText={(record) => (
         <>
           Du&nbsp;
-          <DateField record={record} source="pair:startDate" showTime />
+          <DateField
+            record={record}
+            source="pair:startDate"
+            options={{
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+            }}
+          />
           &nbsp;au&nbsp;
-          <DateField record={record} source="pair:endDate" showTime />
+          <DateField
+            record={record}
+            source="pair:endDate"
+            options={{
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+            }}
+          />
         </>
       )}
       leftAvatar={() =>
