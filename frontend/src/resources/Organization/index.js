@@ -16,7 +16,7 @@ export default {
     },
   },
   dataModel: {
-    types: ["pair:organizationOfMembership"],
+    types: ["pair:Organization"],
     containerUri: process.env.REACT_APP_MIDDLEWARE_URL + "organizations",
     slugField: ["pair:label"],
   },

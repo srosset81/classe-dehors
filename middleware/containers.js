@@ -6,7 +6,7 @@ module.exports = [
   {
     path: '/events',
     acceptedTypes: 'pair:Event',
-    dereference: ['pair:hasLocation/pair:hasPostalAddress', 'pair:operatedBy']
+    dereference: ['pair:hasLocation/pair:hasPostalAddress']
   },
   {
     path: '/places',
@@ -53,7 +53,7 @@ module.exports = [
   },
   {
     path: '/organizations',
-    acceptedTypes: 'pair:organizationOfMembership'
+    acceptedTypes: 'pair:Organization'
   },
   {
     path: '/pages'
