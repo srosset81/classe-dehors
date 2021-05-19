@@ -5,8 +5,8 @@ const PairLocationInput = props => (
   <LocationInput
     mapboxConfig={{
       access_token: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
-      types: ['place', 'address', 'poi'],
-      country: ['fr']
+      types: ['place', 'address'],
+      country: ['fr', 'be', 'ch']
     }}
     parse={value => ({
       type: 'pair:PostalAddress',
