@@ -45,7 +45,8 @@ export const PersonForm = ({ mode, ...rest }) => (
       source="pair:hasLocation"
       selectOptionText="pair:label"
       perPage={1000}
-      validate={validatePlaceForm}
+      validateForm={validatePlaceForm}
+      validate={[required()]}
     >
       <PlaceFields />
     </ReferenceQuickCreateInput>

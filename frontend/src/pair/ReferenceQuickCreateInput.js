@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ReferenceQuickCreateInput = ({ children, selectOptionText, validate, ...rest }) => {
+const ReferenceQuickCreateInput = ({ children, selectOptionText, validateForm, validate, ...rest }) => {
   const classes = useStyles();
 
   const [showDialog, setShowDialog] = useState(false);
@@ -50,7 +50,7 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, validate, ...re
   return (
     <div className={classes.root}>
       {/* Updating the key will force ReferenceInput to reload the available values */}
-      <ReferenceInput key={version} {...rest} classes={{container:classes.container}}>
+      <ReferenceInput key={version} {...rest} classes={{container:classes.container}} validate={validate}>
         <AutocompleteInput optionText={selectOptionText} suggestionLimit={5} shouldRenderSuggestions={value => value.length > 0} />
       </ReferenceInput>
       <Button onClick={() => setShowDialog(true)} label="ra.action.create">
@@ -59,7 +59,7 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, validate, ...re
       <Dialog fullWidth open={showDialog} onClose={() => setShowDialog(false)}>
         <DialogTitle className={classes.dialogTitle}>{translate('ra.action.create')}</DialogTitle>
         <FormWithRedirect
-          validate={validate}
+          validate={validateForm}
           resource={rest.reference}
           save={handleSubmit}
           render={({ handleSubmitWithRedirect, pristine, saving }) => (
