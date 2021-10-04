@@ -136,12 +136,14 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
   const xs = useMediaQuery((theme) => theme.breakpoints.down("xs"));
 
   const [anchorMenuEl, setMenuAnchorEl] = React.useState(null);
-  const open = Boolean(anchorMenuEl);
-  const handleMenuClick = (event) => {
-    console.log(event.currentTarget);
+  const [openMenu, setOpenMenu] = React.useState(null);
+
+  const handleMenuClick = (key) => (event) => {
+    setOpenMenu(key);
     setMenuAnchorEl(event.currentTarget);
   };
   const handleMenuClose = () => {
+    setOpenMenu(null);
     setMenuAnchorEl(null);
   };
 
@@ -183,7 +185,7 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
                             alignItems="center"
                             justifyContent="center"
                             className={classes.subMenu}
-                            onClick={handleMenuClick}
+                            onClick={handleMenuClick(text)}
                           >
                             <Typography className={classes.menuText}>
                               {text.split("\n").map((item, key) => (
@@ -197,7 +199,7 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
                         </Grid>
                         <Menu
                           anchorEl={anchorMenuEl}
-                          open={open}
+                          open={openMenu === text}
                           onClose={handleMenuClose}
                           anchorOrigin={{
                             vertical: "bottom",
