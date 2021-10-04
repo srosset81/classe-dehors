@@ -166,6 +166,13 @@ const Layout = ({ appBar, logout, theme, children }) => {
               Contact
             </a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
+            <Link
+              to="/Page/revue-de-presse/show"
+              className={classes.footerLink}
+            >
+              Revue de presse
+            </Link>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
             <a
               href="https://twitter.com/ClasseDehors"
               target="_blank"
