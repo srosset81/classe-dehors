@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Container,
   Box,
@@ -71,14 +71,7 @@ const InternalMenuLink = ({ text, link, classes }) => (
   <Grid item sm={2} key={text}>
     <Box display="flex" height={48} alignItems="center" justifyContent="center">
       <Link to={link} className={classes.menuLink}>
-        <Typography className={classes.menuText}>
-          {text.split("\n").map((item, key) => (
-            <React.Fragment key={key}>
-              {item}
-              <br />
-            </React.Fragment>
-          ))}
-        </Typography>
+        <Typography className={classes.menuText}>{text}</Typography>
       </Link>
     </Box>
   </Grid>
@@ -88,14 +81,7 @@ const ExternalMenuLink = ({ text, link, classes }) => (
   <Grid item sm={2} key={text}>
     <Box display="flex" height={48} alignItems="center" justifyContent="center">
       <a href={link} target="_blank" className={classes.menuLink}>
-        <Typography className={classes.menuText}>
-          {text.split("\n").map((item, key) => (
-            <React.Fragment key={key}>
-              {item}
-              <br />
-            </React.Fragment>
-          ))}
-        </Typography>
+        <Typography className={classes.menuText}>{text}</Typography>
       </a>
     </Box>
   </Grid>
@@ -103,28 +89,14 @@ const ExternalMenuLink = ({ text, link, classes }) => (
 
 const MenuSubLinks = ({ children, handleMenuClose, classes }) => {
   return children.map(({ text, internal, link }) => (
-    <MenuItem onClick={handleMenuClose}>
+    <MenuItem onClick={handleMenuClose} key={text}>
       {internal ? (
         <Link to={link} className={classes.menuLink}>
-          <Typography>
-            {text.split("\n").map((item, key) => (
-              <React.Fragment key={key}>
-                {item}
-                <br />
-              </React.Fragment>
-            ))}
-          </Typography>
+          <Typography>{text}</Typography>
         </Link>
       ) : (
         <a href={link} target="_blank" className={classes.menuLink}>
-          <Typography>
-            {text.split("\n").map((item, key) => (
-              <React.Fragment key={key}>
-                {item}
-                <br />
-              </React.Fragment>
-            ))}
-          </Typography>
+          <Typography>{text}</Typography>
         </a>
       )}
     </MenuItem>
@@ -171,14 +143,24 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
                 {menuItems.map(({ text, internal, link, children }) => {
                   if (link) {
                     if (internal) {
-                      return <InternalMenuLink {...{ text, link, classes }} />;
+                      return (
+                        <InternalMenuLink
+                          {...{ text, link, classes }}
+                          key={text}
+                        />
+                      );
                     } else {
-                      return <ExternalMenuLink {...{ text, link, classes }} />;
+                      return (
+                        <ExternalMenuLink
+                          {...{ text, link, classes }}
+                          key={text}
+                        />
+                      );
                     }
                   } else {
                     return (
-                      <>
-                        <Grid item sm={2} key={text}>
+                      <Fragment key={text}>
+                        <Grid item sm={2}>
                           <Box
                             display="flex"
                             height={48}
@@ -188,12 +170,7 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
                             onClick={handleMenuClick(text)}
                           >
                             <Typography className={classes.menuText}>
-                              {text.split("\n").map((item, key) => (
-                                <React.Fragment key={key}>
-                                  {item}
-                                  <br />
-                                </React.Fragment>
-                              ))}
+                              {text}
                             </Typography>
                           </Box>
                         </Grid>
@@ -214,7 +191,7 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
                             {...{ children, handleMenuClose, classes }}
                           />
                         </Menu>
-                      </>
+                      </Fragment>
                     );
                   }
                 })}
