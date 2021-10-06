@@ -99,6 +99,7 @@ const HomePage = () => {
         Infolettre
       </Typography>
       <iframe
+        title="infolettre"
         width="1000"
         height="400"
         src="https://7bfa4c43.sibforms.com/serve/MUIEAHYvGpV_Uq7aX2JfH9-JZYypekWGNAJmVNR0oRy4HvJC3S2qGjv7EqY1bawDuT0j3TRy2-TIS1gVhEGl4yemzRvzkZYz8KIk9jw4QJKWXNssBjIL_29pFK4gjzqeYf_F9EKpocV2TTqetmyCHNE24S969k4OqZNfESprgr2-aWd1_IWF8fOAb7gqhHg_hZ1EMZ4Yx_WgEyt_"

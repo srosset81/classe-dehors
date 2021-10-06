@@ -36,6 +36,7 @@ const SideMenu = ({ menuItems, sidebarOpen, setSidebarOpen }) => {
                   key={link}
                   to={{ pathname: link }}
                   target="_blank"
+                  rel="noopener noreferrer"
                 />
               </Fragment>
             );
@@ -58,6 +59,7 @@ const SideMenu = ({ menuItems, sidebarOpen, setSidebarOpen }) => {
                       key={link}
                       to={{ pathname: link }}
                       target="_blank"
+                      rel="noopener noreferrer"
                     />
                   );
                 }

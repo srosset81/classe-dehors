@@ -80,7 +80,12 @@ const InternalMenuLink = ({ text, link, classes }) => (
 const ExternalMenuLink = ({ text, link, classes }) => (
   <Grid item sm={2} key={text}>
     <Box display="flex" height={48} alignItems="center" justifyContent="center">
-      <a href={link} target="_blank" className={classes.menuLink}>
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes.menuLink}
+      >
         <Typography className={classes.menuText}>{text}</Typography>
       </a>
     </Box>
@@ -95,7 +100,12 @@ const MenuSubLinks = ({ children, handleMenuClose, classes }) => {
           <Typography>{text}</Typography>
         </Link>
       ) : (
-        <a href={link} target="_blank" className={classes.menuLink}>
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.menuLink}
+        >
           <Typography>{text}</Typography>
         </a>
       )}
