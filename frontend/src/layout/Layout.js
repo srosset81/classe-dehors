@@ -149,7 +149,7 @@ const Layout = ({ appBar, logout, theme, children }) => {
               rel="noopener noreferrer"
               className={classes.footerLink}
             >
-              Newsletter
+              Infolettre
             </a>
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <Link
