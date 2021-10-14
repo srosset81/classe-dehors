@@ -13,6 +13,14 @@ import { Avatar } from "@material-ui/core";
 import { List, SimpleList } from "@semapps/archipelago-layout";
 import EventIcon from "@material-ui/icons/Event";
 import MarkdownIntroduction from "../../markdown/MarkdownIntroduction";
+import { isBefore } from "date-fns";
+
+const postRowStyle = (record, index) => {
+  const pastEvent = isBefore(new Date(record["pair:endDate"]), new Date());
+  return {
+    backgroundColor: pastEvent ? "lightgray" : "white",
+  };
+};
 
 const EventList = (props) => (
   <>
@@ -26,6 +34,18 @@ const EventList = (props) => (
       <SimpleList
         primaryText={(record) => record["pair:label"]}
         secondaryText={(record) => {
+          const pastEvent =
+            (record["pair:endDate"] &&
+              isBefore(new Date(record["pair:endDate"]), new Date())) ||
+            (!record["pair:endDate"] &&
+              isBefore(new Date(record["pair:startDate"]), new Date()));
+
+          if (pastEvent) {
+            return `Passé:\xa0le\xa0${format(
+              new Date(record["pair:startDate"]),
+              "dd/MM/yyyy"
+            )}`;
+          }
           if (record["pair:startDate"] && record["pair:endDate"]) {
             if (
               isSameDay(
@@ -83,6 +103,7 @@ const EventList = (props) => (
           </Avatar>
         )}
         linkType="show"
+        rowStyle={postRowStyle}
       />
     </List>
   </>
