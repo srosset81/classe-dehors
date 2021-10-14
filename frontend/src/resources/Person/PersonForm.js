@@ -1,73 +1,77 @@
 import React from "react";
+
+import EducationNationalForm from "./specializedForm/EducationNationalForm";
+import AssociationForm from "./specializedForm/AssociationForm";
+import CollectiviteForm from "./specializedForm/CollectiviteForm";
+import LaboratoireDeRechercheForm from "./specializedForm/LaboratoireDeRechercheForm";
+import { profileType } from "constants.js";
 import {
   SimpleForm,
-  TextInput,
-  SelectInput,
-  CheckboxGroupInput,
   Toolbar,
-  required,
+  RadioButtonGroupInput,
+  FormDataConsumer,
 } from "react-admin";
-import { LargeLabel } from "@semapps/archipelago-layout";
 import { ReferenceInput } from "@semapps/semantic-data-provider";
-import { teachingLevel, structureType } from "../../constants";
-import ReferenceQuickCreateInput from "../../pair/ReferenceQuickCreateInput";
-import { validatePlaceForm, PlaceFields } from "../Place/PlaceForm";
 
-export const PersonForm = ({ mode, ...rest }) => (
-  <SimpleForm
-    {...rest}
-    redirect="show"
-    toolbar={<Toolbar alwaysEnableSaveButton />} // Always enable save as there are problems with ReferenceQuickCreateInput
-  >
-    <TextInput source="pair:label" validate={required()} fullWidth />
-    <ReferenceInput
-      reference="Type"
-      source="pair:hasType"
-      filter={{ a: "pair:AgentType" }}
-    >
-      <SelectInput optionText="pair:label" />
-    </ReferenceInput>
-    <CheckboxGroupInput
-      source="cd:teachingLevel"
-      choices={teachingLevel}
-      format={
-        (data) => (data ? (typeof data === "string" ? [data] : data) : []) // deal with the possibility for teaching level to be a string or a list
-      }
+const acceptedHasTypeIds = profileType.map((x) => x.id);
+const FilteredInput = ({ choices, ...props }) => {
+  return (
+    <RadioButtonGroupInput
+      // <SelectInput
+      {...props}
+      choices={choices.filter((x) => acceptedHasTypeIds.includes(x.id))}
+      optionText="pair:label"
     />
-    {/* <TextInput source="cd:subjects" fullWidth /> */}
-    <LargeLabel>Structure</LargeLabel>
-    <SelectInput source="cd:structureType" choices={structureType} />
-    <TextInput source="cd:structureName" fullWidth />
-    <TextInput source="cd:structureLocality" fullWidth />
-    <LargeLabel>Pratique</LargeLabel>
-    <ReferenceQuickCreateInput
-      reference="Place"
-      source="pair:hasLocation"
-      selectOptionText="pair:label"
-      perPage={1000}
-      validateForm={validatePlaceForm}
-      validate={[required()]}
+  );
+};
+
+export const PersonForm = ({ mode, ...rest }) => {
+  return (
+    <SimpleForm
+      {...rest}
+      redirect="show"
+      toolbar={<Toolbar alwaysEnableSaveButton />} // Always enable save as there are problems with ReferenceQuickCreateInput
     >
-      <PlaceFields />
-    </ReferenceQuickCreateInput>
-    <TextInput source="cd:practiceTime" fullWidth />
-    <TextInput source="cd:practiceFrequency" fullWidth />
-    <TextInput source="cd:practiceSubjects" fullWidth />
-    <LargeLabel>Communauté</LargeLabel>
-    <TextInput source="cd:skills" fullWidth />
-    <TextInput source="pair:webPage" fullWidth />
-    <TextInput source="cd:needs" fullWidth />
-    <TextInput source="cd:comments" fullWidth />
-    <LargeLabel>Contact</LargeLabel>
-    {mode === "create" && (
-      <TextInput
-        source="pair:e-mail"
-        helperText="Votre adresse mail n'apparaîtra pas publiquement. On pourra vous écrire via un formulaire de contact."
-        fullWidth
-      />
-    )}
-    <TextInput source="pair:aboutPage" fullWidth />
-  </SimpleForm>
-);
+      <ReferenceInput
+        reference="Type"
+        source="pair:hasType"
+        filter={{
+          a: "pair:AgentType",
+        }}
+      >
+        <FilteredInput />
+      </ReferenceInput>
+      <FormDataConsumer fullWidth>
+        {({ formData, ...rest }) => {
+          if (
+            formData["pair:hasType"] ===
+            "https://data.classe-dehors.org/types/education-nationale"
+          ) {
+            return <EducationNationalForm {...rest} />;
+          }
+          if (
+            formData["pair:hasType"] ===
+            "https://data.classe-dehors.org/types/association"
+          ) {
+            return <AssociationForm />;
+          }
+          if (
+            formData["pair:hasType"] ===
+            "https://data.classe-dehors.org/types/collectivite"
+          ) {
+            return <CollectiviteForm />;
+          }
+          if (
+            formData["pair:hasType"] ===
+            "https://data.classe-dehors.org/types/laboratoire-de-recherche"
+          ) {
+            return <LaboratoireDeRechercheForm />;
+          }
+          return null;
+        }}
+      </FormDataConsumer>
+    </SimpleForm>
+  );
+};
 
 export default PersonForm;
