@@ -1,25 +1,45 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-final-form';
-import { Button, SaveButton, useCreate, useNotify, useTranslate, FormWithRedirect, AutocompleteInput } from 'react-admin';
-import { Dialog, DialogTitle, DialogContent, DialogActions, makeStyles } from '@material-ui/core';
-import IconContentAdd from '@material-ui/icons/Add';
-import IconCancel from '@material-ui/icons/Cancel';
-import { ReferenceInput } from '@semapps/semantic-data-provider';
+import React, { useState } from "react";
+import { useForm } from "react-final-form";
+import {
+  Button,
+  SaveButton,
+  useCreate,
+  useNotify,
+  useTranslate,
+  FormWithRedirect,
+  AutocompleteInput,
+} from "react-admin";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  makeStyles,
+} from "@material-ui/core";
+import IconContentAdd from "@material-ui/icons/Add";
+import IconCancel from "@material-ui/icons/Cancel";
+import { ReferenceInput } from "@semapps/semantic-data-provider";
 
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    alignItems: 'center'
+    display: "flex",
+    alignItems: "center",
   },
   dialogTitle: {
-    paddingBottom: 0
+    paddingBottom: 0,
   },
   container: {
     flexGrow: 0,
   },
 });
 
-const ReferenceQuickCreateInput = ({ children, selectOptionText, validateForm, validate, ...rest }) => {
+const ReferenceQuickCreateInput = ({
+  children,
+  selectOptionText,
+  validateForm,
+  validate,
+  ...rest
+}) => {
   const classes = useStyles();
 
   const [showDialog, setShowDialog] = useState(false);
@@ -29,7 +49,7 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, validateForm, v
   const translate = useTranslate();
   const form = useForm();
 
-  const handleSubmit = async values => {
+  const handleSubmit = async (values) => {
     create(
       { payload: { data: values } },
       {
@@ -41,8 +61,8 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, validateForm, v
           setVersion(version + 1);
         },
         onFailure: ({ error }) => {
-          notify(error.message, 'error');
-        }
+          notify(error.message, "error");
+        },
       }
     );
   };
@@ -50,25 +70,40 @@ const ReferenceQuickCreateInput = ({ children, selectOptionText, validateForm, v
   return (
     <div className={classes.root}>
       {/* Updating the key will force ReferenceInput to reload the available values */}
-      <ReferenceInput key={version} {...rest} classes={{container:classes.container}} validate={validate}>
-        <AutocompleteInput optionText={selectOptionText} suggestionLimit={5} shouldRenderSuggestions={value => value.length > 0} />
+
+      <ReferenceInput
+        key={version}
+        {...rest}
+        classes={{ container: classes.container }}
+        validate={validate}
+      >
+        <AutocompleteInput
+          optionText={selectOptionText}
+          suggestionLimit={5}
+          shouldRenderSuggestions={(value) => value.length > 0}
+          helperText={helperText}
+        />
       </ReferenceInput>
       <Button onClick={() => setShowDialog(true)} label="ra.action.create">
         <IconContentAdd />
       </Button>
       <Dialog fullWidth open={showDialog} onClose={() => setShowDialog(false)}>
-        <DialogTitle className={classes.dialogTitle}>{translate('ra.action.create')}</DialogTitle>
+        <DialogTitle className={classes.dialogTitle}>
+          {translate("ra.action.create")}
+        </DialogTitle>
         <FormWithRedirect
           validate={validateForm}
           resource={rest.reference}
           save={handleSubmit}
           render={({ handleSubmitWithRedirect, pristine, saving }) => (
             <>
-              <DialogContent>
-                {children}
-              </DialogContent>
+              <DialogContent>{children}</DialogContent>
               <DialogActions>
-                <Button label="ra.action.cancel" onClick={() => setShowDialog(false)} disabled={loading}>
+                <Button
+                  label="ra.action.cancel"
+                  onClick={() => setShowDialog(false)}
+                  disabled={loading}
+                >
                   <IconCancel />
                 </Button>
                 <SaveButton
