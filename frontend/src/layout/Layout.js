@@ -54,53 +54,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// TODO: If we are sure to not use sub menu anymore, we should remove its implementation
 const menuItems = [
   { text: "Accueil", internal: true, link: "/" },
   {
     text: "Communauté",
-    children: [
-      { text: "Carte", internal: true, link: "/Place" },
-      { text: "Annuaire", internal: true, link: "/Person" },
-    ],
+    internal: true,
+    link: "/Page/communaute/show",
+    // children: [
+    //   { text: "Carte", internal: true, link: "/Place" },
+    //   { text: "Annuaire", internal: true, link: "/Person" },
+    // ],
   },
   {
     text: "Ressources",
-    children: [
-      {
-        text: "Proposer une ressources",
-        internal: false,
-        link: "/https://wiki.faire-ecole.org/wiki/Spécial:AjouterPage?form=Activité&page_name=",
-      },
-      {
-        text: "Accéder à la bibliothèque",
-        internal: false,
-        link: "https://wiki.faire-ecole.org/wiki/Ressources-classe-dehors",
-      },
-
-      {
-        text: "FAQ profs",
-        internal: false,
-        link: "https://wiki.faire-ecole.org/wiki/Foire_Aux_Questions_:_se_lancer_dans_la_classe_dehors",
-      },
-      {
-        text: "Témoignages",
-        internal: false,
-        link: "https://wiki.faire-ecole.org/wiki/Témoignages_:_apprendre_dehors",
-      },
-      // {
-      //   text: "FAQ collectivités",
-      //   internal: false, link:
-      //     "",
-      // },
-      {
-        text: "Cours végétalisées",
-        internal: false,
-        link: "https://wiki.faire-ecole.org/wiki/Cour_de_récréation",
-      },
-    ],
+    internal: true,
+    link: "/Page/ressource-presentation/show",
   },
   { text: "Agenda", internal: true, link: "/Event" },
-  // { text: "Qui Sommes-nous", internal: true,link: "/" },
+  {
+    text: "Qui Sommes-nous",
+    internal: true,
+    link: "/Page/qui-sommes-nous/show",
+  },
 ];
 
 const Layout = ({ appBar, logout, theme, children }) => {
