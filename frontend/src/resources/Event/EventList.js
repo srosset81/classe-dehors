@@ -28,7 +28,7 @@ const EventList = (props) => (
     <List
       {...props}
       title="Calendrier"
-      sort={{ field: "pair:startDate", order: "DESC" }}
+      sort={{ field: "pair:startDate", order: "ASC" }}
       actions={false}
     >
       <SimpleList
