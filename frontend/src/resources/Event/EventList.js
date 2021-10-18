@@ -1,19 +1,15 @@
 import React from "react";
 import { ReferenceField, TextField } from "react-admin";
 import { Avatar } from "@material-ui/core";
-import { List, SimpleList } from "@semapps/archipelago-layout";
-import EventIcon from "@material-ui/icons/Event";
-
-import isSameDay from "date-fns/isSameDay";
-import format from "date-fns/format";
-
-import React from "react";
-
-import { Avatar } from "@material-ui/core";
-import { List, SimpleList } from "@semapps/archipelago-layout";
+import { List, SimpleList, ListActions } from "@semapps/archipelago-layout";
 import EventIcon from "@material-ui/icons/Event";
 import MarkdownIntroduction from "../../markdown/MarkdownIntroduction";
-import { isBefore } from "date-fns";
+
+import isSameDay from "date-fns/isSameDay";
+import isBefore from "date-fns/isBefore";
+import format from "date-fns/format";
+
+import { eventType } from "constants.js";
 
 const postRowStyle = (record, index) => {
   const pastEvent = isBefore(new Date(record["pair:endDate"]), new Date());
@@ -29,7 +25,7 @@ const EventList = (props) => (
       {...props}
       title="Calendrier"
       sort={{ field: "pair:startDate", order: "ASC" }}
-      actions={false}
+      actions={<ListActions exporter={false} />}
     >
       <SimpleList
         primaryText={(record) => record["pair:label"]}
@@ -95,7 +91,9 @@ const EventList = (props) => (
               </ReferenceField>
             );
           }
-          return "";
+          return record["pair:hasType"]
+            ? eventType.find(({ id }) => id === record["pair:hasType"])?.name
+            : "";
         }}
         leftAvatar={() => (
           <Avatar width="100%">

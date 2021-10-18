@@ -38,6 +38,7 @@ const ReferenceQuickCreateInput = ({
   selectOptionText,
   validateForm,
   validate,
+  helperText,
   ...rest
 }) => {
   const classes = useStyles();

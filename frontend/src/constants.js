@@ -77,3 +77,19 @@ export const schoolType = [
   { id: "ecole_privee", name: "Ecole privée sous contrat" },
   { id: "ecole_privee_hc", name: "Ecole privée hors contrat" },
 ];
+
+export const eventType = [
+  { id: "webinaire", name: "webinaire" },
+  { id: "formation", name: "formation" },
+  { id: "seminaire_de_recherche", name: "séminaire de recherche" },
+  { id: "journee_de_travail", name: "journée de travail" },
+];
+export const organizerType = [
+  { id: "association", name: "association" },
+  { id: "collectif", name: "collectif" },
+  { id: "laboratoire_de_recherche", name: "laboratoire de recherche" },
+  { id: "collectivite", name: "collectivité" },
+  { id: "education_nationale", name: "éducation nationale" },
+  { id: "entreprise", name: "entreprise" },
+  { id: "autre", name: "autre" },
+];
