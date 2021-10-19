@@ -4,7 +4,7 @@ import { required, SimpleForm, TextInput, SelectInput } from "react-admin";
 import MarkdownInput from "../../markdown/MarkdownInput";
 import { DateTimeInput } from "@semapps/date-components";
 import frLocale from "date-fns/locale/fr";
-import { eventType, organizerType } from "constants.js";
+import { eventType, organizerType } from "../../constants.js";
 
 const urlValidation = (value) => {
   if (value && !value.startsWith("http://") && !value.startsWith("https://")) {

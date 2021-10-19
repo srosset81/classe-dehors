@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput, required } from "react-admin";
-import MarkdownInput from "ra-input-markdown";
+import MarkdownInput from "../../../markdown/MarkdownInput";
 import { LargeLabel } from "@semapps/archipelago-layout";
 import ReferenceQuickCreateInput from "../../../pair/ReferenceQuickCreateInput";
 import PairLocationInput from "../../../pair/PairLocationInput";

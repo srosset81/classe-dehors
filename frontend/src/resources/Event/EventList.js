@@ -9,7 +9,7 @@ import isSameDay from "date-fns/isSameDay";
 import isBefore from "date-fns/isBefore";
 import format from "date-fns/format";
 
-import { eventType } from "constants.js";
+import { eventType } from "../../constants.js";
 
 const postRowStyle = (record, index) => {
   const pastEvent = isBefore(new Date(record["pair:endDate"]), new Date());

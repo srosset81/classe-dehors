@@ -9,7 +9,7 @@ import {
   MarkdownField,
 } from "@semapps/archipelago-layout";
 import EventTitle from "./EventTitle";
-import { eventType, organizerType } from "constants.js";
+import { eventType, organizerType } from "../../constants.js";
 
 const EventShow = (props) => (
   <Show title={<EventTitle />} {...props}>

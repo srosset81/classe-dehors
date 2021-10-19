@@ -4,7 +4,7 @@ import EducationNationalForm from "./specializedForm/EducationNationalForm";
 import AssociationForm from "./specializedForm/AssociationForm";
 import CollectiviteForm from "./specializedForm/CollectiviteForm";
 import LaboratoireDeRechercheForm from "./specializedForm/LaboratoireDeRechercheForm";
-import { profileType } from "constants.js";
+import { profileType } from "../../constants.js";
 import {
   SimpleForm,
   Toolbar,

@@ -5,7 +5,7 @@ import {
   AutocompleteInput,
   required,
 } from "react-admin";
-import MarkdownInput from "ra-input-markdown";
+import MarkdownInput from "../../../markdown/MarkdownInput";
 import { LargeLabel } from "@semapps/archipelago-layout";
 
 import { teachingLevel, academies, schoolType } from "../../../constants";

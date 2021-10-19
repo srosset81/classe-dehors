@@ -3,10 +3,10 @@ import { TextField, SelectField } from "react-admin";
 
 import { Hero } from "@semapps/archipelago-layout";
 import { ReferenceField } from "@semapps/semantic-data-provider";
-import ContactField from "contact/ContactField";
+import ContactField from "../../../contact/ContactField";
 
-import SubList from "layout/SubList";
-import { teachingLevel, schoolType } from "constants.js";
+import SubList from "../../../layout/SubList";
+import { teachingLevel, schoolType } from "../../../constants.js";
 
 const EducationNationalDisplay = ({ mode, ...rest }) => (
   <>

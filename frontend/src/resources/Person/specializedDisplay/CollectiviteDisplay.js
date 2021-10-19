@@ -3,9 +3,9 @@ import { TextField } from "react-admin";
 
 import { Hero } from "@semapps/archipelago-layout";
 import { ReferenceField } from "@semapps/semantic-data-provider";
-import ContactField from "contact/ContactField";
+import ContactField from "../../../contact/ContactField";
 
-import SubList from "layout/SubList";
+import SubList from "../../../layout/SubList";
 
 const CollectiviteDisplay = ({ mode, ...rest }) => (
   <>
