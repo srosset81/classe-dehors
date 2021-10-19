@@ -1,15 +1,17 @@
-import React from 'react';
-import { UrlField, DateField, TextField } from 'react-admin';
-import { ReferenceField } from '@semapps/semantic-data-provider';
+import React from "react";
+import { ReferenceField } from "@semapps/semantic-data-provider";
+
+import { UrlField, DateField, SelectField, TextField } from "react-admin";
 import {
   Hero,
   Show,
   MainList,
   MarkdownField,
-} from '@semapps/archipelago-layout';
-import EventTitle from './EventTitle';
+} from "@semapps/archipelago-layout";
+import EventTitle from "./EventTitle";
+import { eventType, organizerType } from "../../constants.js";
 
-const EventShow = props => (
+const EventShow = (props) => (
   <Show title={<EventTitle />} {...props}>
     <>
       <Hero>
@@ -22,8 +24,14 @@ const EventShow = props => (
         >
           <TextField source="pair:label" />
         </ReferenceField>
+
+        <SelectField source="pair:hasType" choices={eventType} />
+        <TextField source="cd:organizerName" fullWidth />
+        <SelectField source="cd:organizerTypee" choices={organizerType} />
+
         <UrlField source="cd:registrationPage" />
         <UrlField source="cd:meetingPage" />
+        <TextField source="cd:documentedAt" fullWidth />
       </Hero>
       <MainList>
         <MarkdownField source="pair:description" />

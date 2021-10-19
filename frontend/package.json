@@ -20,7 +20,8 @@
     "react-admin": "^3.13.5",
     "react-dom": "^16.14.0",
     "react-mde": "^11.5.0",
-    "showdown": "^1.9.1"
+    "showdown": "^1.9.1",
+    "react-twitter-widgets": "^1.10.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
