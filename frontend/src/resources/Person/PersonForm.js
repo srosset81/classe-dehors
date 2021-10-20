@@ -21,6 +21,7 @@ const FilteredInput = ({ choices, ...props }) => {
       {...props}
       choices={choices.filter((x) => acceptedHasTypeIds.includes(x.id))}
       optionText="pair:label"
+      helperText="Afin de vous enregistrer sur la carte, merci de bien vouloir sélectionner votre profil"
     />
   );
 };
