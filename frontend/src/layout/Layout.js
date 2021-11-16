@@ -56,7 +56,12 @@ const useStyles = makeStyles((theme) => ({
 
 // TODO: If we are sure to not use sub menu anymore, we should remove its implementation
 const menuItems = [
-  { text: "Accueil", internal: true, link: "/" },
+  {
+    text: "Accueil",
+    internal: false,
+    samePage: true,
+    link: "https://www.classe-dehors.org/",
+  },
   {
     text: "Communauté",
     internal: true,

@@ -77,12 +77,12 @@ const InternalMenuLink = ({ text, link, classes }) => (
   </Grid>
 );
 
-const ExternalMenuLink = ({ text, link, classes }) => (
+const ExternalMenuLink = ({ text, link, classes, samePage = false }) => (
   <Grid item sm={2} key={text}>
     <Box display="flex" height={48} alignItems="center" justifyContent="center">
       <a
         href={link}
-        target="_blank"
+        target={samePage ? null : "_blank"}
         rel="noopener noreferrer"
         className={classes.menuLink}
       >
@@ -134,10 +134,13 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
       <Container maxWidth="lg" className={classes.header}>
         <Grid container>
           <Grid item sm={4} xs={10} className={classes.logoArea}>
-            <Link to="/" className={classes.menuLink}>
+            <a
+              href="https://www.classe-dehors.org/"
+              className={classes.menuLink}
+            >
               {/*<img src={process.env.PUBLIC_URL + '/colibris-blanc.png'} alt="Colibris" className={classes.logo} />*/}
               <span className={classes.logoText}>Classe Dehors</span>
-            </Link>
+            </a>
           </Grid>
           <Grid item sm={8} xs={2} align="right">
             {xs ? (
@@ -150,61 +153,63 @@ const AppBar = ({ menuItems, setSidebarOpen }) => {
               </IconButton>
             ) : (
               <Grid container>
-                {menuItems.map(({ text, internal, link, children }) => {
-                  if (link) {
-                    if (internal) {
-                      return (
-                        <InternalMenuLink
-                          {...{ text, link, classes }}
-                          key={text}
-                        />
-                      );
+                {menuItems.map(
+                  ({ text, internal, link, samePage, children }) => {
+                    if (link) {
+                      if (internal) {
+                        return (
+                          <InternalMenuLink
+                            {...{ text, link, classes }}
+                            key={text}
+                          />
+                        );
+                      } else {
+                        return (
+                          <ExternalMenuLink
+                            {...{ text, link, samePage, classes }}
+                            key={text}
+                          />
+                        );
+                      }
                     } else {
                       return (
-                        <ExternalMenuLink
-                          {...{ text, link, classes }}
-                          key={text}
-                        />
+                        <Fragment key={text}>
+                          <Grid item sm={2}>
+                            <Box
+                              display="flex"
+                              height={48}
+                              alignItems="center"
+                              justifyContent="center"
+                              className={classes.subMenu}
+                              onClick={handleMenuClick(text)}
+                            >
+                              <Typography className={classes.menuText}>
+                                {text}
+                              </Typography>
+                            </Box>
+                          </Grid>
+                          <Menu
+                            anchorEl={anchorMenuEl}
+                            open={openMenu === text}
+                            onClose={handleMenuClose}
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "left",
+                            }}
+                            transformOrigin={{
+                              vertical: "top",
+                              horizontal: "left",
+                            }}
+                          >
+                            <MenuSubLinks
+                              {...{ children, handleMenuClose, classes }}
+                            />
+                          </Menu>
+                        </Fragment>
                       );
                     }
-                  } else {
-                    return (
-                      <Fragment key={text}>
-                        <Grid item sm={2}>
-                          <Box
-                            display="flex"
-                            height={48}
-                            alignItems="center"
-                            justifyContent="center"
-                            className={classes.subMenu}
-                            onClick={handleMenuClick(text)}
-                          >
-                            <Typography className={classes.menuText}>
-                              {text}
-                            </Typography>
-                          </Box>
-                        </Grid>
-                        <Menu
-                          anchorEl={anchorMenuEl}
-                          open={openMenu === text}
-                          onClose={handleMenuClose}
-                          anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "left",
-                          }}
-                          transformOrigin={{
-                            vertical: "top",
-                            horizontal: "left",
-                          }}
-                        >
-                          <MenuSubLinks
-                            {...{ children, handleMenuClose, classes }}
-                          />
-                        </Menu>
-                      </Fragment>
-                    );
                   }
-                })}
+                )}
               </Grid>
             )}
           </Grid>

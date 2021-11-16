@@ -61,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const HomePage = () => {
+  // dirty fall back to the webflow page
+  window.location.replace("http://www.classe-dehors.org");
+
   const classes = useStyles();
   const xs = useMediaQuery((theme) => theme.breakpoints.down("xs"));
   return (
