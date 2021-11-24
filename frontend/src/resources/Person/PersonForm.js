@@ -48,25 +48,25 @@ export const PersonForm = ({ mode, ...rest }) => {
             formData["pair:hasType"] ===
             "https://data.classe-dehors.org/types/education-nationale"
           ) {
-            return <EducationNationalForm {...rest} />;
+            return <EducationNationalForm mode={mode} {...rest} />;
           }
           if (
             formData["pair:hasType"] ===
             "https://data.classe-dehors.org/types/association"
           ) {
-            return <AssociationForm />;
+            return <AssociationForm mode={mode} {...rest} />;
           }
           if (
             formData["pair:hasType"] ===
             "https://data.classe-dehors.org/types/collectivite"
           ) {
-            return <CollectiviteForm />;
+            return <CollectiviteForm mode={mode} {...rest} />;
           }
           if (
             formData["pair:hasType"] ===
             "https://data.classe-dehors.org/types/laboratoire-de-recherche"
           ) {
-            return <LaboratoireDeRechercheForm />;
+            return <LaboratoireDeRechercheForm mode={mode} {...rest} />;
           }
           return null;
         }}
